@@ -1,0 +1,635 @@
+{
+  "Users": [
+    {
+      "id": "05b1",
+      "Username": "Dipanshu sahu",
+      "UserEmail": "Dipanshu@gmail.com",
+      "Userpassword": "87654321",
+      "Usernumber": "123456",
+      "profileimage": "https://substackcdn.com/image/fetch/f_auto,q_auto:good,fl_progressive:steep/https://substack-post-media.s3.amazonaws.com/public/images/d9de33d5-f786-406b-866c-4e8086819787_1280x720.jpeg",
+      "role": "Users",
+      "Useraddress": "plot no.21 ,ashok viahr ,harnathpura jhotwara ,jaipur",
+      "Userpincode": "302021",
+      "Userstate": "Rajsthan",
+      "uniqid": "05b1"
+    },
+    {
+      "id": "91e0",
+      "Username": "King ",
+      "UserEmail": "king@gmail.com",
+      "Userpassword": "54568",
+      "Usernumber": "548794",
+      "profileimage": "/static/media/profile.e67da9e6bdff6a28e917.png",
+      "role": "Users",
+      "Useraddress": "",
+      "Userpincode": "",
+      "Userstate": "",
+      "Usercity": ""
+    },
+    {
+      "id": "13f2",
+      "Username": "Dipanshu sahu",
+      "UserEmail": "Dipanshu@gmail.com",
+      "Userpassword": "87654321",
+      "Usernumber": "8949809081",
+      "profileimage": "/static/media/profile.e67da9e6bdff6a28e917.png",
+      "role": "Users",
+      "Useraddress": "",
+      "Userpincode": "",
+      "Userstate": "",
+      "Usercity": ""
+    },
+    {
+      "id": "c36a",
+      "Username": "kunal sahu",
+      "UserEmail": "kunal@gmail.com",
+      "Userpassword": "87654321",
+      "Usernumber": "4051449811851",
+      "profileimage": "/static/media/profile.e67da9e6bdff6a28e917.png",
+      "role": "Users",
+      "Useraddress": "",
+      "Userpincode": "",
+      "Userstate": "",
+      "Usercity": ""
+    },
+    {
+      "id": "91ea",
+      "Username": "Don sahu",
+      "UserEmail": "Don@gmaiil.com",
+      "Userpassword": "Dipanshu@2006",
+      "Usernumber": "8965342312",
+      "Useraddress": "",
+      "Userpincode": "",
+      "Userstate": "",
+      "Usercity": "",
+      "profileimage": "/static/media/profile.e67da9e6bdff6a28e917.png",
+      "role": "Users"
+    },
+    {
+      "id": "6340",
+      "Username": "Don sahu",
+      "UserEmail": "Don@gmaiil.com",
+      "Userpassword": "Dipanshu@2006",
+      "Usernumber": "8965342312",
+      "Useraddress": "",
+      "Userpincode": "",
+      "Userstate": "",
+      "Usercity": "",
+      "profileimage": "/static/media/profile.e67da9e6bdff6a28e917.png",
+      "role": "Users"
+    },
+    {
+      "id": "521b",
+      "Username": "Baadshah sahu",
+      "UserEmail": "Dones@gmaiil.com",
+      "Userpassword": "Dipanshu@1234",
+      "Usernumber": "8965342398",
+      "Useraddress": "",
+      "Userpincode": "",
+      "Userstate": "",
+      "Usercity": "",
+      "profileimage": "/static/media/profile.e67da9e6bdff6a28e917.png",
+      "role": "Users"
+    },
+    {
+      "id": "fcfb",
+      "Username": "Kunal sahu",
+      "UserEmail": "Kunal@gmail.com",
+      "Userpassword": "Dipanshu@2006",
+      "Usernumber": "8000559769",
+      "Useraddress": "",
+      "Userpincode": "",
+      "Userstate": "",
+      "Usercity": "",
+      "profileimage": "/static/media/profile.e67da9e6bdff6a28e917.png",
+      "role": "Users"
+    },
+    {
+      "id": "f246",
+      "Username": "Dipanshuu  Sahu",
+      "UserEmail": "Dipanshu123456v7@gmail.com",
+      "Userpassword": "Dipanshu@5431",
+      "Usernumber": "9876542345",
+      "Useraddress": "",
+      "Userpincode": "",
+      "Userstate": "",
+      "Usercity": "",
+      "profileimage": "/static/media/profile.e67da9e6bdff6a28e917.png",
+      "role": "Users"
+    },
+    {
+      "id": "ff0d",
+      "Username": "nirmal kumar",
+      "UserEmail": "nirmal@gmail.com",
+      "Userpassword": "Nirmal@123",
+      "Usernumber": "888888888888",
+      "Useraddress": "joshi marg",
+      "Userpincode": "302012",
+      "Userstate": "rajsthan",
+      "Usercity": "",
+      "profileimage": "/static/media/profile.e67da9e6bdff6a28e917.png",
+      "role": "Users"
+    }
+  ],
+  "Adminauth": [
+    {
+      "id": "2489",
+      "Username": "Dipanshu sahu",
+      "UserEmail": "Dipanshu@gmail.com",
+      "Userpassword": "87654321",
+      "Usernumber": "9876543",
+      "role": "Admin",
+      "Userid": "2489"
+    },
+    {
+      "id": "5770",
+      "Username": "Mohit todwata",
+      "UserEmail": "Nirmal@gmail.com",
+      "Userpassword": "1234",
+      "Usernumber": "8053088725",
+      "role": "Subadmin",
+      "Userid": "5770"
+    },
+    {
+      "id": "f05f",
+      "Username": "Kunal sahu",
+      "UserEmail": "Kunal@gmail.com",
+      "Userpassword": "Kunal@4321",
+      "Usernumber": "8000559769",
+      "role": "Subadmin"
+    },
+    {
+      "id": "2917",
+      "Username": "Kunal Sahu",
+      "UserEmail": "Kunasl@gmail.com",
+      "Userpassword": "4321",
+      "Usernumber": "8000559669",
+      "role": "Subadmin"
+    }
+  ],
+  "Products": [
+    {
+      "id": "94ae",
+      "ProductName": "GOBOULT (previously Boult) Astra with Quad Mic ENC",
+      "ProductPrice": "7888",
+      "ProductImage": "https://wallpaperaccess.com/full/366217.jpg",
+      "ProductCategory": "DISPLAY ELECTRONICS",
+      "ProductQuantity": "1",
+      "ProductDescription": "Read Customer Reviews & Find Best Sellers. Free, Easy Returns On Millions Of Items. Shop Home Entertainment, TVs, Home Audio, Headphones, Cameras, Accessories and More.\n\nServices: Marine Electronics, Amazon Ads, Amazon Web Services, Pharmacy and more",
+      "ProductBrand": "1"
+    },
+    {
+      "id": "a963",
+      "ProductName": "Canon EOS 3000D DSLR Camera 1 Body, 55 mm Lens",
+      "ProductPrice": "78",
+      "ProductImage": "https://wallpaperaccess.com/full/851951.jpg",
+      "ProductCategory": "DISPLAY ELECTRONICS",
+      "ProductQuantity": "1",
+      "ProductDescription": "This Canon R100 Mirrorless Camera features a RF-S 18-45 mm lens, which provides a wide range of focal lengths for capturing everything from landscapes to portraits. With its mirrorless design, this camera offers fast and accurate autofocus, as well as the ability to shoot in low-light conditions. With Creative Assist Mode, Hybrid Auto Mode, and Silent Mode for Quiet Operation, this camera is sure to impress with its performance and image quality.",
+      "ProductBrand": "1"
+    },
+    {
+      "id": "23c3",
+      "ProductName": "wireless stereo earbuds",
+      "ProductPrice": "99",
+      "ProductImage": "https://watchesbysjx.com/wp-content/uploads/2022/11/rolex-Deepsea-Challenge-126067-3.jpg",
+      "ProductQuantity": "1",
+      "ProductDescription": "Enhanced Sound Experience]: The buds comes with 12.4 mm Titanized Diaphragm Drivers with which you can enjoy music with deeper bass and pure clear treble, immersing in the audiophile-grade sound experience. It has 3D audio specifically for OnePlus smartphone users.",
+      "ProductBrand": "1",
+      "ProductCategory": "Luxuriie's accessories"
+    },
+    {
+      "id": "92ec",
+      "ProductName": "rolex-daytona",
+      "ProductPrice": "9999",
+      "ProductImage": "https://watchexchange.sg/wp-content/uploads/2023/05/rolex-daytona-2023-review.jpg",
+      "ProductCategory": "Men's accessories",
+      "ProductQuantity": "1",
+      "ProductDescription": "Experience audio bliss like never before with the GOBOULT W40 Earbuds. Boasting an impressive 48 hours of total playtime, they ensure uninterrupted entertainment for extended periods. Thanks to Type-C fast charging, you can get 100 minutes of playtime with just 10 minutes of charge. An ultra-low latency of 45ms guarantees smooth audio sync during gaming and video playback, immersing you in a world of excitement. Latest Blink & Pair Bluetooth 5.3 technology ensures effortless and instant pairing with your devices, and with ZEN Mode Environmental Noise Cancellation, get crystal-clear calls even in noisy surroundings. What is more, 13mm Drivers powered by BoomX deliver rich bass and clear treble, providing an immersive audio experience. That is not all, the GOBOULT W40 Earbuds also support SBC AAC Codecs, catering to audiophiles seeking top-notch audio quality.",
+      "ProductBrand": "1"
+    },
+    {
+      "id": "53b6",
+      "ProductName": "Camera f5",
+      "ProductPrice": "987",
+      "ProductImage": "https://media.gq.com/photos/636175be96efe5f456046f92/16:9/w_2560%2Cc_limit/m126067-0001_2209jva_002_l_new-cover.jpeg",
+      "ProductCategory": "ELECTRONOCS",
+      "ProductQuantity": "1",
+      "ProductDescription": "Description:\nThis stylized concept features a sleek, matte-black cylindrical spray can, designed with modern aesthetics in mind. The container includes a ribbed twist cap for improved grip and control. The body of the can showcases a minimalistic design, highlighted with subtle geometric patterns and branding elements.\n\nMaterial: Matte-finished plastic with soft-touch grip\n\nDesign Highlights:\n\nBlender logo printed in vibrant orange and white\n\nRibbed grip for ergonomic use\n\nClean, monochromatic geometric background for premium visual appeal\n\nIdeal Use: Cosmetics, personal care, or artistic spray applications\n\nPresentation: 3D rendered in Blender (as suggested by the logo), perfect for marketing, prototyping, or design showcases",
+      "ProductBrand": "1"
+    },
+    {
+      "id": "3de8",
+      "ProductName": "Headphone 7s",
+      "ProductPrice": "54",
+      "ProductImage": "https://mir-s3-cdn-cf.behance.net/project_modules/hd/fd65fd38857937.57717dcd13f96.jpg",
+      "ProductCategory": "Cameras",
+      "ProductQuantity": "1",
+      "ProductDescription": "Crafted with precision and elegance, this Rolex Submariner features a 40mm stainless steel case, a ceramic bezel, and automatic movement. Waterproof up to 300 meters, it’s the perfect blend of luxury and performance for divers and collectors alike.",
+      "ProductBrand": "1"
+    },
+    {
+      "id": "f2b9",
+      "ProductName": "Nulara S",
+      "ProductPrice": "98",
+      "ProductImage": "https://i.ytimg.com/vi/vfxG9c2Ogow/maxresdefault.jpg",
+      "ProductCategory": "ELECTRONOCS Products",
+      "ProductQuantity": "1",
+      "ProductDescription": "Compact yet powerful, with professional features like Beat FX, Jog Wheels, and Rekordbox DJ compatibility. Ideal for beginner to intermediate DJs.\n\nNumark Mixtrack Platinum FX\nEquipped with 24-bit audio output, 4-deck control, and large jog wheels with built-in displays. Great for live performances and mixing on the go.",
+      "ProductBrand": "1"
+    },
+    {
+      "id": "85db",
+      "ProductName": "URBANBOX Sneakers",
+      "ProductPrice": "99",
+      "ProductImage": "https://img-new.cgtrader.com/items/4582260/c8acf0d313/large/product-animation-shoe-animation-blender-project-file-3d-model-c8acf0d313.jpg",
+      "ProductCategory": "Men's wear",
+      "ProductQuantity": "1",
+      "ProductDescription": "Engineered with a large Air unit for maximum cushioning, breathable mesh upper, and lightweight design. Perfect for sports and casual streetwear.                                         High-performance running shoes with responsive Boost cushioning, Primeknit upper for adaptive fit, and durable rubber outsole for traction.                                        Classic low-top sneakers with a sleek suede finish, cushioned insole, and rubber sole. A versatile choice for daily wear.",
+      "ProductBrand": "1"
+    }
+  ],
+  "Cart": [
+    {
+      "id": "85db",
+      "ProductName": "URBANBOX Sneakers",
+      "ProductPrice": "99",
+      "ProductImage": "https://img-new.cgtrader.com/items/4582260/c8acf0d313/large/product-animation-shoe-animation-blender-project-file-3d-model-c8acf0d313.jpg",
+      "ProductCategory": "Men's wear",
+      "ProductQuantity": 8
+    },
+    {
+      "id": "a963",
+      "ProductName": "Canon EOS 3000D DSLR Camera 1 Body, 55 mm Lens ",
+      "ProductPrice": "78",
+      "ProductImage": "https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?_gl=1*h6pgf6*_ga*OTM5ODM4NDQuMTc0OTc5NTEyMQ..*_ga_8JE65Q40S6*czE3NTM4NTc4NzYkbzIkZzEkdDE3NTM4NTc5NDMkajU4JGwwJGgw",
+      "ProductCategory": "DISPLAY ELECTRONICS",
+      "ProductQuantity": 7
+    },
+    {
+      "id": "23c3",
+      "ProductName": "wireless stereo earbuds",
+      "ProductPrice": "99",
+      "ProductImage": "https://static.vecteezy.com/system/resources/thumbnails/044/781/921/small/closeup-white-tws-true-wireless-stereo-earbuds-in-case-isolated-on-black-background-free-photo.jpg",
+      "ProductCategory": "Electronic Products",
+      "ProductQuantity": 3
+    },
+    {
+      "id": "f2b9",
+      "ProductName": "Nulara S",
+      "ProductPrice": "98",
+      "ProductImage": "https://i.ytimg.com/vi/vfxG9c2Ogow/maxresdefault.jpg",
+      "ProductCategory": "ELECTRONOCS Products",
+      "ProductQuantity": 5
+    }
+  ],
+  "AdminReply": [
+    {
+      "id": "ca3c",
+      "CustomerName": "Dipanshu sahu",
+      "Emaileaddress": "Dipanshu@gmail.com",
+      "BillNumber": "456123",
+      "CustomerNumber": "8949809081",
+      "Reply": "Dear [Dipanshu sahu], thank you for reaching out to us. We have received your enquiry regarding [short summary of the query]. Our team is currently reviewing your request and will provide you with a detailed response within the next 24 hours. Should you have any additional information or questions, please feel free to reply to this message. We appreciate your patience and look forward to assisting you further."
+    },
+    {
+      "id": "97ac",
+      "CustomerName": "Vikas",
+      "Emaileaddress": "Vikas@gmail.com",
+      "BillNumber": "78900",
+      "CustomerNumber": "80000559769",
+      "Reply": "Dear Mr. Vikas, thank you for bringing this to our attention. We have reviewed your concern regarding the loose jar lid of your SmartBlend Mixer (Model SB-450). As your purchase is still under warranty, we will arrange for a replacement lid at no additional cost. Our service representative will contact you within 2 working days to schedule the delivery. We appreciate your patience and look forward to resolving this promptly."
+    },
+    {
+      "id": "4b1f",
+      "CustomerName": "Ramesh Verma",
+      "Emaileaddress": "ramesh.verma@example.com",
+      "BillNumber": "78542",
+      "CustomerNumber": "9823456789",
+      "Reply": "Dear Mr. Verma, thank you for informing us about the size mismatch with your ComfortWalk running shoes. We apologize for the inconvenience caused. Please initiate a return request through our website or visit your nearest store with the invoice. Once we receive the returned item, we will ship the correct size (Size 10) within 3–5 working days. Our customer support team will also follow up to ensure a smooth exchange process"
+    }
+  ],
+  "Enquiries": [
+    {
+      "id": "772c",
+      "CustomerName": "Dipanshu sahu",
+      "Emaileaddress": "Dipanshu@gmail.com",
+      "BillNumber": "456123",
+      "CustomerNumber": "8949809081",
+      "Customerenquarirs": "The SoundMax Pro Wireless Headphones deliver an impressive combination of deep bass, crystal-clear vocals, and balanced treble, making them ideal for both music enthusiasts and casual listeners. Their lightweight design and plush ear cushions ensure lasting comfort during extended use, while the 25-hour battery life and stable Bluetooth range add to their practicality. Although the noise cancellation works well in most environments, it could be slightly improved for very noisy surroundings, and a USB-C charging port would have been more convenient. Overall, this product offers excellent value for money and stands out as a reliable choice in its segment"
+    },
+    {
+      "id": "515b",
+      "CustomerName": "Vikas",
+      "Emaileaddress": "Vikas@gmail.com",
+      "BillNumber": "78900",
+      "CustomerNumber": "80000559769",
+      "Customerenquarirs": "I recently purchased the SmartBlend Mixer (Model SB-450) from your store on 5th August 2025. While the product works fine, the jar lid is slightly loose, and I am concerned it might spill while blending. Could you please advise if this can be replaced under warranty?"
+    },
+    {
+      "id": "06a3",
+      "CustomerName": "Ramesh Verma",
+      "Emaileaddress": "ramesh.verma@example.com",
+      "BillNumber": "78542",
+      "CustomerNumber": "9823456789",
+      "Customerenquarirs": "I ordered a pair of ComfortWalk running shoes on 10th August 2025, but I received the wrong size (Size 9 instead of Size 10). Please let me know the process for exchange and how long it will take"
+    }
+  ],
+  "Order": [
+    {
+      "0": {
+        "id": "92ec",
+        "ProductName": "Smartphone with Green Screen",
+        "ProductPrice": "110",
+        "ProductImage": "https://wirecase3d.com/cdn/shop/products/2Fcar91.jpg?v=1532866136&width=1100",
+        "ProductCategory": "Electronic Products",
+        "ProductQuantity": 3,
+        "Status": "Pending"
+      },
+      "1": {
+        "id": "23c3",
+        "ProductName": "wireless stereo earbuds",
+        "ProductPrice": "99",
+        "ProductImage": "https://static.vecteezy.com/system/resources/thumbnails/044/781/921/small/closeup-white-tws-true-wireless-stereo-earbuds-in-case-isolated-on-black-background-free-photo.jpg",
+        "ProductCategory": "Electronic Products",
+        "ProductQuantity": 2,
+        "Status": "Pending"
+      },
+      "id": "e8dc"
+    },
+    {
+      "0": {
+        "id": "94ae",
+        "ProductName": "GOBOULT (previously Boult) Astra with Quad Mic ENC",
+        "ProductPrice": "7888",
+        "ProductImage": "https://quincemedia.com/wp-content/uploads/2018/04/nikon-2979478_1920-1024x576.jpg",
+        "ProductCategory": "DISPLAY ELECTRONICS",
+        "ProductQuantity": 1,
+        "ProductDescription": "Read Customer Reviews & Find Best Sellers. Free, Easy Returns On Millions Of Items. Shop Home Entertainment, TVs, Home Audio, Headphones, Cameras, Accessories and More.\n\nServices: Marine Electronics, Amazon Ads, Amazon Web Services, Pharmacy and more",
+        "ProductBrand": "1",
+        "Status": "Pending"
+      },
+      "id": "35dd"
+    },
+    {
+      "0": {
+        "id": "85db",
+        "ProductName": "URBANBOX Sneakers",
+        "ProductPrice": "99",
+        "ProductImage": "https://img-new.cgtrader.com/items/4582260/c8acf0d313/large/product-animation-shoe-animation-blender-project-file-3d-model-c8acf0d313.jpg",
+        "ProductCategory": "Men's wear",
+        "ProductQuantity": 1,
+        "Status": "Pending"
+      },
+      "id": "eb9b"
+    },
+    {
+      "0": {
+        "id": "85db",
+        "ProductName": "URBANBOX Sneakers",
+        "ProductPrice": "99",
+        "ProductImage": "https://img-new.cgtrader.com/items/4582260/c8acf0d313/large/product-animation-shoe-animation-blender-project-file-3d-model-c8acf0d313.jpg",
+        "ProductCategory": "Men's wear",
+        "ProductQuantity": 8
+      },
+      "1": {
+        "id": "a963",
+        "ProductName": "Canon EOS 3000D DSLR Camera 1 Body, 55 mm Lens ",
+        "ProductPrice": "78",
+        "ProductImage": "https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?_gl=1*h6pgf6*_ga*OTM5ODM4NDQuMTc0OTc5NTEyMQ..*_ga_8JE65Q40S6*czE3NTM4NTc4NzYkbzIkZzEkdDE3NTM4NTc5NDMkajU4JGwwJGgw",
+        "ProductCategory": "DISPLAY ELECTRONICS",
+        "ProductQuantity": 6
+      },
+      "2": {
+        "id": "23c3",
+        "ProductName": "wireless stereo earbuds",
+        "ProductPrice": "99",
+        "ProductImage": "https://static.vecteezy.com/system/resources/thumbnails/044/781/921/small/closeup-white-tws-true-wireless-stereo-earbuds-in-case-isolated-on-black-background-free-photo.jpg",
+        "ProductCategory": "Electronic Products",
+        "ProductQuantity": 3
+      },
+      "3": {
+        "id": "f2b9",
+        "ProductName": "Nulara S",
+        "ProductPrice": "98",
+        "ProductImage": "https://i.ytimg.com/vi/vfxG9c2Ogow/maxresdefault.jpg",
+        "ProductCategory": "ELECTRONOCS Products",
+        "ProductQuantity": 5
+      },
+      "4": {
+        "id": "3de8",
+        "ProductName": "Headphone 7s",
+        "ProductPrice": "54",
+        "ProductImage": "https://mir-s3-cdn-cf.behance.net/project_modules/hd/fd65fd38857937.57717dcd13f96.jpg",
+        "ProductCategory": "Cameras",
+        "ProductQuantity": 6
+      },
+      "5": {
+        "id": "53b6",
+        "ProductName": "Camera f5",
+        "ProductPrice": "987",
+        "ProductImage": "https://cdn.dribbble.com/userupload/16590341/file/original-afeef416ac3b36ce10388fa1c255256d.png?crop=327x0-1767x1080&format=webp&resize=400x300&vertical=center",
+        "ProductCategory": "ELECTRONOCS",
+        "ProductQuantity": 7
+      },
+      "6": {
+        "id": "94ae",
+        "ProductName": "GOBOULT (previously Boult) Astra with Quad Mic ENC",
+        "ProductPrice": "7888",
+        "ProductImage": "https://wallpaperaccess.com/full/366217.jpg",
+        "ProductCategory": "DISPLAY ELECTRONICS",
+        "ProductQuantity": 2,
+        "ProductDescription": "Read Customer Reviews & Find Best Sellers. Free, Easy Returns On Millions Of Items. Shop Home Entertainment, TVs, Home Audio, Headphones, Cameras, Accessories and More.\n\nServices: Marine Electronics, Amazon Ads, Amazon Web Services, Pharmacy and more",
+        "ProductBrand": "1"
+      },
+      "7": {
+        "id": "92ec",
+        "ProductName": "rolex-daytona",
+        "ProductPrice": "9999",
+        "ProductImage": "https://watchexchange.sg/wp-content/uploads/2023/05/rolex-daytona-2023-review.jpg",
+        "ProductCategory": "Men's accessories",
+        "ProductQuantity": 8,
+        "ProductDescription": "Experience audio bliss like never before with the GOBOULT W40 Earbuds. Boasting an impressive 48 hours of total playtime, they ensure uninterrupted entertainment for extended periods. Thanks to Type-C fast charging, you can get 100 minutes of playtime with just 10 minutes of charge. An ultra-low latency of 45ms guarantees smooth audio sync during gaming and video playback, immersing you in a world of excitement. Latest Blink & Pair Bluetooth 5.3 technology ensures effortless and instant pairing with your devices, and with ZEN Mode Environmental Noise Cancellation, get crystal-clear calls even in noisy surroundings. What is more, 13mm Drivers powered by BoomX deliver rich bass and clear treble, providing an immersive audio experience. That is not all, the GOBOULT W40 Earbuds also support SBC AAC Codecs, catering to audiophiles seeking top-notch audio quality.",
+        "ProductBrand": "1"
+      },
+      "id": "dd90"
+    },
+    {
+      "0": {
+        "id": "85db",
+        "ProductName": "URBANBOX Sneakers",
+        "ProductPrice": "99",
+        "ProductImage": "https://img-new.cgtrader.com/items/4582260/c8acf0d313/large/product-animation-shoe-animation-blender-project-file-3d-model-c8acf0d313.jpg",
+        "ProductCategory": "Men's wear",
+        "ProductQuantity": 8
+      },
+      "1": {
+        "id": "a963",
+        "ProductName": "Canon EOS 3000D DSLR Camera 1 Body, 55 mm Lens ",
+        "ProductPrice": "78",
+        "ProductImage": "https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?_gl=1*h6pgf6*_ga*OTM5ODM4NDQuMTc0OTc5NTEyMQ..*_ga_8JE65Q40S6*czE3NTM4NTc4NzYkbzIkZzEkdDE3NTM4NTc5NDMkajU4JGwwJGgw",
+        "ProductCategory": "DISPLAY ELECTRONICS",
+        "ProductQuantity": 6
+      },
+      "2": {
+        "id": "23c3",
+        "ProductName": "wireless stereo earbuds",
+        "ProductPrice": "99",
+        "ProductImage": "https://static.vecteezy.com/system/resources/thumbnails/044/781/921/small/closeup-white-tws-true-wireless-stereo-earbuds-in-case-isolated-on-black-background-free-photo.jpg",
+        "ProductCategory": "Electronic Products",
+        "ProductQuantity": 3
+      },
+      "3": {
+        "id": "f2b9",
+        "ProductName": "Nulara S",
+        "ProductPrice": "98",
+        "ProductImage": "https://i.ytimg.com/vi/vfxG9c2Ogow/maxresdefault.jpg",
+        "ProductCategory": "ELECTRONOCS Products",
+        "ProductQuantity": 5
+      },
+      "4": {
+        "id": "3de8",
+        "ProductName": "Headphone 7s",
+        "ProductPrice": "54",
+        "ProductImage": "https://mir-s3-cdn-cf.behance.net/project_modules/hd/fd65fd38857937.57717dcd13f96.jpg",
+        "ProductCategory": "Cameras",
+        "ProductQuantity": 6
+      },
+      "5": {
+        "id": "53b6",
+        "ProductName": "Camera f5",
+        "ProductPrice": "987",
+        "ProductImage": "https://cdn.dribbble.com/userupload/16590341/file/original-afeef416ac3b36ce10388fa1c255256d.png?crop=327x0-1767x1080&format=webp&resize=400x300&vertical=center",
+        "ProductCategory": "ELECTRONOCS",
+        "ProductQuantity": 7
+      },
+      "6": {
+        "id": "94ae",
+        "ProductName": "GOBOULT (previously Boult) Astra with Quad Mic ENC",
+        "ProductPrice": "7888",
+        "ProductImage": "https://wallpaperaccess.com/full/366217.jpg",
+        "ProductCategory": "DISPLAY ELECTRONICS",
+        "ProductQuantity": 3,
+        "ProductDescription": "Read Customer Reviews & Find Best Sellers. Free, Easy Returns On Millions Of Items. Shop Home Entertainment, TVs, Home Audio, Headphones, Cameras, Accessories and More.\n\nServices: Marine Electronics, Amazon Ads, Amazon Web Services, Pharmacy and more",
+        "ProductBrand": "1"
+      },
+      "7": {
+        "id": "92ec",
+        "ProductName": "rolex-daytona",
+        "ProductPrice": "9999",
+        "ProductImage": "https://watchexchange.sg/wp-content/uploads/2023/05/rolex-daytona-2023-review.jpg",
+        "ProductCategory": "Men's accessories",
+        "ProductQuantity": 8,
+        "ProductDescription": "Experience audio bliss like never before with the GOBOULT W40 Earbuds. Boasting an impressive 48 hours of total playtime, they ensure uninterrupted entertainment for extended periods. Thanks to Type-C fast charging, you can get 100 minutes of playtime with just 10 minutes of charge. An ultra-low latency of 45ms guarantees smooth audio sync during gaming and video playback, immersing you in a world of excitement. Latest Blink & Pair Bluetooth 5.3 technology ensures effortless and instant pairing with your devices, and with ZEN Mode Environmental Noise Cancellation, get crystal-clear calls even in noisy surroundings. What is more, 13mm Drivers powered by BoomX deliver rich bass and clear treble, providing an immersive audio experience. That is not all, the GOBOULT W40 Earbuds also support SBC AAC Codecs, catering to audiophiles seeking top-notch audio quality.",
+        "ProductBrand": "1"
+      },
+      "id": "947f"
+    },
+    {
+      "0": {
+        "id": "85db",
+        "ProductName": "URBANBOX Sneakers",
+        "ProductPrice": "99",
+        "ProductImage": "https://img-new.cgtrader.com/items/4582260/c8acf0d313/large/product-animation-shoe-animation-blender-project-file-3d-model-c8acf0d313.jpg",
+        "ProductCategory": "Men's wear",
+        "ProductQuantity": 8
+      },
+      "1": {
+        "id": "a963",
+        "ProductName": "Canon EOS 3000D DSLR Camera 1 Body, 55 mm Lens ",
+        "ProductPrice": "78",
+        "ProductImage": "https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?_gl=1*h6pgf6*_ga*OTM5ODM4NDQuMTc0OTc5NTEyMQ..*_ga_8JE65Q40S6*czE3NTM4NTc4NzYkbzIkZzEkdDE3NTM4NTc5NDMkajU4JGwwJGgw",
+        "ProductCategory": "DISPLAY ELECTRONICS",
+        "ProductQuantity": 7
+      },
+      "2": {
+        "id": "23c3",
+        "ProductName": "wireless stereo earbuds",
+        "ProductPrice": "99",
+        "ProductImage": "https://static.vecteezy.com/system/resources/thumbnails/044/781/921/small/closeup-white-tws-true-wireless-stereo-earbuds-in-case-isolated-on-black-background-free-photo.jpg",
+        "ProductCategory": "Electronic Products",
+        "ProductQuantity": 3
+      },
+      "3": {
+        "id": "f2b9",
+        "ProductName": "Nulara S",
+        "ProductPrice": "98",
+        "ProductImage": "https://i.ytimg.com/vi/vfxG9c2Ogow/maxresdefault.jpg",
+        "ProductCategory": "ELECTRONOCS Products",
+        "ProductQuantity": 5
+      },
+      "4": {
+        "id": "3de8",
+        "ProductName": "Headphone 7s",
+        "ProductPrice": "54",
+        "ProductImage": "https://mir-s3-cdn-cf.behance.net/project_modules/hd/fd65fd38857937.57717dcd13f96.jpg",
+        "ProductCategory": "Cameras",
+        "ProductQuantity": 6
+      },
+      "5": {
+        "id": "53b6",
+        "ProductName": "Camera f5",
+        "ProductPrice": "987",
+        "ProductImage": "https://cdn.dribbble.com/userupload/16590341/file/original-afeef416ac3b36ce10388fa1c255256d.png?crop=327x0-1767x1080&format=webp&resize=400x300&vertical=center",
+        "ProductCategory": "ELECTRONOCS",
+        "ProductQuantity": 7
+      },
+      "6": {
+        "id": "94ae",
+        "ProductName": "GOBOULT (previously Boult) Astra with Quad Mic ENC",
+        "ProductPrice": "7888",
+        "ProductImage": "https://wallpaperaccess.com/full/366217.jpg",
+        "ProductCategory": "DISPLAY ELECTRONICS",
+        "ProductQuantity": 3,
+        "ProductDescription": "Read Customer Reviews & Find Best Sellers. Free, Easy Returns On Millions Of Items. Shop Home Entertainment, TVs, Home Audio, Headphones, Cameras, Accessories and More.\n\nServices: Marine Electronics, Amazon Ads, Amazon Web Services, Pharmacy and more",
+        "ProductBrand": "1"
+      },
+      "7": {
+        "id": "92ec",
+        "ProductName": "rolex-daytona",
+        "ProductPrice": "9999",
+        "ProductImage": "https://watchexchange.sg/wp-content/uploads/2023/05/rolex-daytona-2023-review.jpg",
+        "ProductCategory": "Men's accessories",
+        "ProductQuantity": 8,
+        "ProductDescription": "Experience audio bliss like never before with the GOBOULT W40 Earbuds. Boasting an impressive 48 hours of total playtime, they ensure uninterrupted entertainment for extended periods. Thanks to Type-C fast charging, you can get 100 minutes of playtime with just 10 minutes of charge. An ultra-low latency of 45ms guarantees smooth audio sync during gaming and video playback, immersing you in a world of excitement. Latest Blink & Pair Bluetooth 5.3 technology ensures effortless and instant pairing with your devices, and with ZEN Mode Environmental Noise Cancellation, get crystal-clear calls even in noisy surroundings. What is more, 13mm Drivers powered by BoomX deliver rich bass and clear treble, providing an immersive audio experience. That is not all, the GOBOULT W40 Earbuds also support SBC AAC Codecs, catering to audiophiles seeking top-notch audio quality.",
+        "ProductBrand": "1"
+      },
+      "id": "1d4e"
+    },
+    {
+      "0": {
+        "id": "85db",
+        "ProductName": "URBANBOX Sneakers",
+        "ProductPrice": "99",
+        "ProductImage": "https://img-new.cgtrader.com/items/4582260/c8acf0d313/large/product-animation-shoe-animation-blender-project-file-3d-model-c8acf0d313.jpg",
+        "ProductCategory": "Men's wear",
+        "ProductQuantity": 8
+      },
+      "1": {
+        "id": "a963",
+        "ProductName": "Canon EOS 3000D DSLR Camera 1 Body, 55 mm Lens ",
+        "ProductPrice": "78",
+        "ProductImage": "https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?_gl=1*h6pgf6*_ga*OTM5ODM4NDQuMTc0OTc5NTEyMQ..*_ga_8JE65Q40S6*czE3NTM4NTc4NzYkbzIkZzEkdDE3NTM4NTc5NDMkajU4JGwwJGgw",
+        "ProductCategory": "DISPLAY ELECTRONICS",
+        "ProductQuantity": 7
+      },
+      "2": {
+        "id": "23c3",
+        "ProductName": "wireless stereo earbuds",
+        "ProductPrice": "99",
+        "ProductImage": "https://static.vecteezy.com/system/resources/thumbnails/044/781/921/small/closeup-white-tws-true-wireless-stereo-earbuds-in-case-isolated-on-black-background-free-photo.jpg",
+        "ProductCategory": "Electronic Products",
+        "ProductQuantity": 3
+      },
+      "3": {
+        "id": "f2b9",
+        "ProductName": "Nulara S",
+        "ProductPrice": "98",
+        "ProductImage": "https://i.ytimg.com/vi/vfxG9c2Ogow/maxresdefault.jpg",
+        "ProductCategory": "ELECTRONOCS Products",
+        "ProductQuantity": 5
+      },
+      "id": "b6b3"
+    }
+  ]
+}
