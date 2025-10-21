@@ -106,20 +106,6 @@ function Header({ setSearchQuery }){
         setprofile({ display: "none" })
       }
 
-      const Toglas1 =()=>{
-        setBar1({ display: "none" })
-        setbar2({ display: "block" })
-        setMenue({transform: "translateX(50px)" })
-      }
-       
-
-      const Toglas2 =()=>{
-        setBar1({ display: "block" })
-        setbar2({ display: "none" })
-        setMenue({ transform: "translateX(-370px)" })
-        
-      }
-
       const Logout=()=>{
          localStorage.removeItem("Ids")
          setbuttne1({ display: "none" })

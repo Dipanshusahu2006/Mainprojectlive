@@ -40,37 +40,61 @@ export default function ProductDetails() {
 }
 
   async function AddToCart() {
-    try {
-      const cartRes = await fetch("http://localhost:3000/Cart");
-      const cartItems = await cartRes.json();
+  try {
+    const cartRes = await fetch("https://main-projectnode.vercel.app/cart/Get");
+    const cartItems = await cartRes.json();
+    const cartitemsget = cartItems.Data || [];
 
-      const existingItem = cartItems.find((item) => String(item.id) === String(id));
-      let response;
+    // Use product._id instead of undefined "id"
+    const existingItem = cartitemsget.find(
+      (item) => String(item._id) === String(product._id)
+    );
 
-      if (existingItem) {
-        response = await fetch(`http://localhost:3000/Cart/${id}`, {
-          method: "PATCH",
+    let response;
+
+    if (existingItem) {
+      // Update quantity for existing item
+      response = await fetch(
+        `https://main-projectnode.vercel.app/cart/Edit/${product._id}`,
+        {
+          method: "PUT",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ ProductQuantity: existingItem.ProductQuantity + 1 }),
-        });
-      } else {
-        response = await fetch("http://localhost:3000/Cart", {
+          body: JSON.stringify({
+            ProductQuantity: existingItem.ProductQuantity + 1,
+          }),
+        }
+      );
+    } else {
+      // Add new product to cart
+      response = await fetch(
+        "https://main-projectnode.vercel.app/cart/Post",
+        {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ ...product, ProductQuantity: 1 }),
-        });
-      }
-
-      toast.dismiss();
-      response.ok
-        ? toast.success("Product added to cart successfully")
-        : toast.error("Error adding product to cart");
-    } catch (error) {
-      toast.dismiss();
-      toast.error("Please try again");
-      console.error(error);
+          body: JSON.stringify({
+            ProductName: product.ProductName,
+            ProductPrice: product.ProductPrice,
+            ProductImage: product.ProductImage,
+            ProductCategory: product.ProductCategory,
+            ProductDescription: product.ProductDescription || "",
+            ProductBrand: product.ProductBrand || "",
+            ProductQuantity: 1,
+            id: product._id, // keep this field for backend reference
+          }),
+        }
+      );
     }
+
+    toast.dismiss();
+    response.ok
+      ? toast.success("Product added to cart successfully")
+      : toast.error("Error adding product to cart");
+  } catch (error) {
+    toast.dismiss();
+    toast.error("Please try again");
+    console.error(error);
   }
+}
 
   return (
     <>
@@ -102,9 +126,9 @@ export default function ProductDetails() {
         category: product.productCategory,
         quantity: product.ProductQuantity,
       });
-        Whislist(product.id);
+        Whislist(product._id);
       }}>
-       {wishlist[product.id] ? (
+       {wishlist[product._id] ? (
         <i className="fa-solid fa-heart" style={{ color: 'red' }}></i>
        ) : (
         <i className="fa-regular fa-heart"></i>
