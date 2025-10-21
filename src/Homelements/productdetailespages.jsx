@@ -1,74 +1,76 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { FaStar, FaBolt } from "react-icons/fa";
 import { useParams } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
-import '../App.css';
+import "../App.css";
 import Header from "../CommonElements/Header";
-import tag from "../Images/tag.png"
+import tag from "../Images/tag.png";
 import Footer from "../CommonElements/Footer";
 import { useCart } from "react-use-cart";
 import { Helmet } from "react-helmet";
 
 export default function ProductDetails() {
-   const { addItem } = useCart();
+  const { addItem } = useCart();
   const { ProductName } = useParams();
-  const [product, setProduct] = useState({});
-   const [wishlist, setWishlist] = useState({});
 
-    
-   const decodedName = decodeURIComponent(ProductName);
+  const [product, setProduct] = useState(null);
+  const [wishlist, setWishlist] = useState({});
+  const [loading, setLoading] = useState(true);
 
-  const fetchProductDetails = async () => {
+  const decodedName = decodeURIComponent(ProductName);
+
+  // ✅ Use useCallback to avoid ESLint missing dependency warning
+  const fetchProductDetails = useCallback(async () => {
     try {
-      const res = await fetch(`https://main-projectnode.vercel.app/product/Get/${decodedName}`);
+      const res = await fetch(
+        `https://main-projectnode.vercel.app/product/Get/${decodedName}`
+      );
       const data = await res.json();
-      setProduct(data.Data || []);
+      setProduct(data.Data || {});
     } catch (error) {
       console.error("Failed to fetch product details:", error);
+      toast.error("Failed to load product details");
+    } finally {
+      setLoading(false);
     }
-  };
+  }, [decodedName]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    if (decodedName) {
-    fetchProductDetails();
-  }
-}, [decodedName]);
-  const Whislist = (productId) => {
-  setWishlist((prevWishlist) => ({ ...prevWishlist, [productId]: true }));
-  toast.success("Product added to wishlist");
-}
+    if (decodedName) fetchProductDetails();
+  }, [decodedName, fetchProductDetails]);
 
-  async function AddToCart() {
-  try {
-    const cartRes = await fetch("https://main-projectnode.vercel.app/cart/Get");
-    const cartItems = await cartRes.json();
-    const cartitemsget = cartItems.Data || [];
+  const handleWishlist = (productId) => {
+    setWishlist((prev) => ({ ...prev, [productId]: true }));
+    toast.success("Product added to wishlist");
+  };
 
-    // Use product._id instead of undefined "id"
-    const existingItem = cartitemsget.find(
-      (item) => String(item._id) === String(product._id)
-    );
+  const AddToCart = async () => {
+    if (!product) return;
 
-    let response;
+    try {
+      const cartRes = await fetch("https://main-projectnode.vercel.app/cart/Get");
+      const cartItems = await cartRes.json();
+      const cartList = cartItems.Data || [];
 
-    if (existingItem) {
-      // Update quantity for existing item
-      response = await fetch(
-        `https://main-projectnode.vercel.app/cart/Edit/${product._id}`,
-        {
-          method: "PUT",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            ProductQuantity: existingItem.ProductQuantity + 1,
-          }),
-        }
+      const existingItem = cartList.find(
+        (item) => String(item._id) === String(product._id)
       );
-    } else {
-      // Add new product to cart
-      response = await fetch(
-        "https://main-projectnode.vercel.app/cart/Post",
-        {
+
+      let response;
+      if (existingItem) {
+        response = await fetch(
+          `https://main-projectnode.vercel.app/cart/Edit/${product._id}`,
+          {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              ProductQuantity: existingItem.ProductQuantity + 1,
+            }),
+          }
+        );
+      } else {
+        response = await fetch("https://main-projectnode.vercel.app/cart/Post", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -79,61 +81,90 @@ export default function ProductDetails() {
             ProductDescription: product.ProductDescription || "",
             ProductBrand: product.ProductBrand || "",
             ProductQuantity: 1,
-            id: product._id, // keep this field for backend reference
+            id: product._id,
           }),
-        }
-      );
-    }
+        });
+      }
 
-    toast.dismiss();
-    response.ok
-      ? toast.success("Product added to cart successfully")
-      : toast.error("Error adding product to cart");
-  } catch (error) {
-    toast.dismiss();
-    toast.error("Please try again");
-    console.error(error);
+      response.ok
+        ? toast.success("Product added to cart successfully")
+        : toast.error("Error adding product to cart");
+    } catch (error) {
+      console.error(error);
+      toast.error("Please try again");
+    }
+  };
+
+  if (loading) {
+    return (
+      <>
+        <Header />
+        <div className="loading">Loading product details...</div>
+        <Footer />
+      </>
+    );
   }
-}
+
+  if (!product) {
+    return (
+      <>
+        <Header />
+        <div className="error">Product not found.</div>
+        <Footer />
+      </>
+    );
+  }
 
   return (
     <>
       <Toaster />
       <Helmet>
-   <title>{product?.ProductName || "Product Details"}</title>
-  <meta name="description" content={product?.ProductDescription || "Buy this amazing product"} />
-</Helmet>
-      <Header/>
+        <title>{product.ProductName || "Product Details"}</title>
+        <meta
+          name="description"
+          content={product.ProductDescription || "Buy this amazing product"}
+        />
+      </Helmet>
+      <Header />
+
       <div className="pd-container">
         {/* Left: Product Image */}
         <div className="pd-left">
-          <img src={product.ProductImage} alt={product.ProductName} className="pd-image" />
+          <img
+            src={product.ProductImage}
+            alt={product.ProductName || "Product"}
+            className="pd-image"
+          />
+
           <div className="pd-buttons">
             <button className="pd-buy-now">
               <FaBolt /> BUY NOW
             </button>
             <button className="pd-add-cart" onClick={AddToCart}>
-              <i className="fa-solid fa-cart-shopping" ></i>
-              ADD TO CART
+              <i className="fa-solid fa-cart-shopping"></i> ADD TO CART
             </button>
           </div>
-          <button className="wishlist-btn" onClick={() => {
-  addItem({
-       id: product.id,
-      price: product.ProductPrice,
-      name: product.ProductName,
-       image: product.ProductImage,
-        category: product.productCategory,
-        quantity: product.ProductQuantity,
-      });
-        Whislist(product._id);
-      }}>
-       {wishlist[product._id] ? (
-        <i className="fa-solid fa-heart" style={{ color: 'red' }}></i>
-       ) : (
-        <i className="fa-regular fa-heart"></i>
-       )}
-      </button>
+
+          <button
+            className="wishlist-btn"
+            onClick={() => {
+              addItem({
+                id: product._id,
+                price: product.ProductPrice,
+                name: product.ProductName,
+                image: product.ProductImage,
+                category: product.ProductCategory,
+                quantity: product.ProductQuantity || 1,
+              });
+              handleWishlist(product._id);
+            }}
+          >
+            {wishlist[product._id] ? (
+              <i className="fa-solid fa-heart" style={{ color: "red" }}></i>
+            ) : (
+              <i className="fa-regular fa-heart"></i>
+            )}
+          </button>
         </div>
 
         {/* Right: Product Info */}
@@ -156,120 +187,92 @@ export default function ProductDetails() {
           <p className="pd-emi">₹4,667/month • 3 months No Cost EMI</p>
 
           <div className="pd-offers">
-            <h4>Available offers</h4>
+            <h4>Available Offers</h4>
             <ul>
-              <li><img src={tag}></img>5% cashback on Flipkart Axis Bank Credit Card</li>
-              <li><img src={tag}></img>5% cashback on Axis Bank Flipkart Debit Card</li>
-              <li><img src={tag}></img>Up to ₹30 Instant Cashback on BHIM Payments App</li>
-              <li><img src={tag}></img>Extra ₹4000 off (price inclusive of cashback/coupon)</li>
+              <li>
+                <img src={tag} alt="offer tag" /> 5% cashback on Flipkart Axis
+                Bank Credit Card
+              </li>
+              <li>
+                <img src={tag} alt="offer tag" /> 5% cashback on Axis Bank
+                Flipkart Debit Card
+              </li>
+              <li>
+                <img src={tag} alt="offer tag" /> Up to ₹30 Instant Cashback on
+                BHIM App
+              </li>
+              <li>
+                <img src={tag} alt="offer tag" /> Extra ₹4000 off (inclusive of
+                cashback/coupon)
+              </li>
             </ul>
           </div>
+
           <div className="products-descriptione">
-           <h3>Products Descriptione</h3>
-
-           <p>{product.ProductDescription}</p>
+            <h3>Product Description</h3>
+            <p>{product.ProductDescription}</p>
           </div>
 
-           <div className="ratingsReviews">
-      <h2>Ratings & Reviews</h2>
+          {/* Ratings & Reviews Section */}
+          <div className="ratingsReviews">
+            <h2>Ratings & Reviews</h2>
 
-      <div className="ratingsSummary">
-        {/* Left side average */}
-        <div className="averageRating">
-          <span className="ratingValue">4.4</span>
-          <FaStar className="starIcon" />
-          <p>98,450 Ratings & 5,008 Reviews</p>
-        </div>
+            <div className="ratingsSummary">
+              <div className="averageRating">
+                <span className="ratingValue">4.4</span>
+                <FaStar className="starIcon" />
+                <p>98,450 Ratings & 5,008 Reviews</p>
+              </div>
 
-        {/* Middle bars */}
-        <div className="ratingBars">
-          <div className="ratingBar">
-            <span>5 ★</span>
-            <div className="progress"><div className="fill fillGreen" style={{ width: "75%" }}></div></div>
-            <span>65,837</span>
+              <div className="ratingBars">
+                {[
+                  { stars: 5, width: "75%", count: "65,837" },
+                  { stars: 4, width: "25%", count: "20,782" },
+                  { stars: 3, width: "10%", count: "5,458" },
+                  { stars: 2, width: "5%", count: "2,054" },
+                  { stars: 1, width: "7%", count: "4,319" },
+                ].map((bar) => (
+                  <div className="ratingBar" key={bar.stars}>
+                    <span>{bar.stars} ★</span>
+                    <div className="progress">
+                      <div className="fill fillGreen" style={{ width: bar.width }}></div>
+                    </div>
+                    <span>{bar.count}</span>
+                  </div>
+                ))}
+              </div>
+
+              <button className="rateBtn">Rate Product</button>
+            </div>
+
+            {/* Circle Ratings */}
+            <div className="circleRatings">
+              {[
+                { label: "Camera", rating: 4.0 },
+                { label: "Battery", rating: 4.5 },
+                { label: "Display", rating: 4.2 },
+                { label: "Design", rating: 4.3 },
+              ].map(({ label, rating }) => (
+                <div className="circle" key={label}>
+                  <div
+                    className="progressCircle"
+                    style={{
+                      background: `conic-gradient(#228B22 ${(rating / 5) * 100}%, #eee 0)`,
+                    }}
+                  >
+                    <div className="innerCircle">
+                      <span>{rating}</span>
+                    </div>
+                  </div>
+                  <p>{label}</p>
+                </div>
+              ))}
+            </div>
           </div>
-          <div className="ratingBar">
-            <span>4 ★</span>
-            <div className="progress"><div className="fill fillGreen" style={{ width: "25%" }}></div></div>
-            <span>20,782</span>
-          </div>
-          <div className="ratingBar">
-            <span>3 ★</span>
-            <div className="progress"><div className="fill fillLightGreen" style={{ width: "10%" }}></div></div>
-            <span>5,458</span>
-          </div>
-          <div className="ratingBar">
-            <span>2 ★</span>
-            <div className="progress"><div className="fill fillOrange" style={{ width: "5%" }}></div></div>
-            <span>2,054</span>
-          </div>
-          <div className="ratingBar">
-            <span>1 ★</span>
-            <div className="progress"><div className="fill fillRed" style={{ width: "7%" }}></div></div>
-            <span>4,319</span>
-          </div>
-        </div>
-
-        <button className="rateBtn">Rate Product</button>
-      </div>
-
-      {/* Circles */}
-      <div className="circleRatings">
-  <div className="circle">
-    <div
-      className="progressCircle"
-      style={{ background: `conic-gradient(#228B22 ${(4.0 / 5) * 100}%, #eee 0)` }}
-    >
-      <div className="innerCircle">
-        <span>4.0</span>
-      </div>
-    </div>
-    <p>Camera</p>
-  </div>
-
-  <div className="circle">
-    <div
-      className="progressCircle"
-      style={{ background: `conic-gradient(#228B22 ${(4.5 / 5) * 100}%, #eee 0)` }}
-    >
-      <div className="innerCircle">
-        <span>4.5</span>
-      </div>
-    </div>
-    <p>Battery</p>
-  </div>
-
-  <div className="circle">
-    <div
-      className="progressCircle"
-      style={{ background: `conic-gradient(#228B22 ${(4.2 / 5) * 100}%, #eee 0)` }}
-    >
-      <div className="innerCircle">
-        <span>4.2</span>
-      </div>
-    </div>
-    <p>Display</p>
-  </div>
-
-  <div className="circle">
-    <div
-      className="progressCircle"
-      style={{ background: `conic-gradient(#228B22 ${(4.3 / 5) * 100}%, #eee 0)` }}
-    >
-      <div className="innerCircle">
-        <span>4.3</span>
-      </div>
-    </div>
-    <p>Design</p>
-  </div>
-</div>
-
-
-    </div>
-
         </div>
       </div>
-      <Footer/>
+
+      <Footer />
     </>
   );
 }

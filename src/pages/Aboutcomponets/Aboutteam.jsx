@@ -51,7 +51,6 @@ function TeamSection() {
             <h3>{member.name}</h3>
             <p className="role">{member.role}</p>
             <p className="desc">{member.description}</p>
-            <a href="#">Learn More</a>
           </div>
         ))}
       </div>

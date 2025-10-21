@@ -1,8 +1,5 @@
 import React from "react";
 import "../../App.css";
-import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from "react-icons/fa";
-import { FiSend } from "react-icons/fi";
-import { MdEmail } from "react-icons/md";
 import sofa from '../../Images/sofa.png';
 
 

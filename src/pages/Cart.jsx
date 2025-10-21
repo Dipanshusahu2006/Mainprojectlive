@@ -69,7 +69,7 @@ function Productcart() {
   useEffect(() => {
     CartProducts();
     ProfileChekout();
-  }, []);
+  }, [CartProducts, ProfileChekout]);
 
     const  Carttotal = Cartproduct.reduce((total, item) => total + (item.ProductPrice * item.ProductQuantity), 0)
 
