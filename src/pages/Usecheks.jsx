@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import '../App.css';
+import "../App.css";
 import toast, { Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
@@ -14,37 +14,51 @@ function Usermailecheks() {
   const [Useradderss, setUseradderss] = useState("");
   const [userpincode, setuserpincode] = useState("");
   const [userstate, setuserstate] = useState("");
-  const [username, setUsername] = useState(""); // ✅ new
+  const [username, setUsername] = useState("");
 
   useEffect(() => {
+    if (!Id) return;
     const fetchConfirmData = async () => {
-      const response = await fetch(`https://main-projectnode.vercel.app/user/Get/${Id}`);
-      const data = await response.json();
-      const users = data?.Data || {};
-      setEmail(users.email);
-      setNumber(users.phone);
-      setUseradderss(users.Useraddress);
-      setuserpincode(users.Userpincode);
-      setuserstate(users.Userstate);
-      setUsername(users.username || "Guest"); // ✅ added
+      try {
+        const response = await fetch(`https://main-projectnode.vercel.app/user/Get/${Id}`);
+        const data = await response.json();
+        const users = data?.Data || {};
+        setEmail(users.email || "");
+        setNumber(users.phone || "");
+        setUseradderss(users.Useraddress || "");
+        setuserpincode(users.Userpincode || "");
+        setuserstate(users.Userstate || "");
+        setUsername(users.username || "Guest");
+      } catch {
+        toast.error("Failed to load user info");
+      }
     };
     fetchConfirmData();
     Cartsdata();
   }, [Id]);
 
   async function Cartsdata() {
-    const Cartdata = await fetch("https://main-projectnode.vercel.app/cart/Get");
-    const cartspost = await Cartdata.json();
-    setCartdata(cartspost.Data || []);
+    try {
+      const response = await fetch("https://main-projectnode.vercel.app/cart/Get");
+      const cartspost = await response.json();
+      setCartdata(cartspost.Data || []);
+    } catch {
+      toast.error("Error fetching cart data");
+    }
   }
 
   async function Confirmforms() {
+    if (!email || !number || !Useradderss) {
+      toast.error("Please fill all required details");
+      return;
+    }
+
     const ConfirmsUsers = {
-      email: email.trim() || email,
-      phone: number.trim() || number,
-      Useraddress: Useradderss.trim() || Useradderss,
-      Userpincode: userpincode.trim() || userpincode,
-      Userstate: userstate.trim() || userstate,
+      email: email.trim(),
+      phone: number.trim(),
+      Useraddress: Useradderss.trim(),
+      Userpincode: userpincode.trim(),
+      Userstate: userstate.trim(),
     };
 
     try {
@@ -54,45 +68,52 @@ function Usermailecheks() {
         headers: { "Content-Type": "application/json" },
       });
 
-      const Order = await fetch("https://main-projectnode.vercel.app/order/Post", {
+      const OrderRes = await fetch("https://main-projectnode.vercel.app/order/Post", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          username: username, // ✅ send username instead of userId
+          username,
+          email,
+          address: `${Useradderss}, ${userstate}, ${userpincode}`,
           products: Cartdata.map((item) => ({
             ProductName: item.ProductName,
             ProductImage: item.ProductImage,
-            ProductPrice: item.ProductPrice,
+            ProductPrice: Number(item.ProductPrice),
             ProductCategory: item.ProductCategory,
             ProductQuantity: item.ProductQuantity,
           })),
           TotalAmount: Cartdata.reduce(
-            (sum, item) => sum + item.ProductPrice * item.ProductQuantity,
+            (sum, item) => sum + Number(item.ProductPrice) * item.ProductQuantity,
             0
           ),
         }),
       });
+
+      if (!OrderRes.ok) {
+        throw new Error("Order creation failed");
+      }
 
       await fetch("https://main-projectnode.vercel.app/cart/Delete", {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
       });
 
-      if (Profilecheck.ok && Order.ok) {
-        toast.success("Order confirmed successfully");
+      if (Profilecheck.ok) {
+        toast.success("Order confirmed successfully!");
         setTimeout(() => navigate("/Qrcode"), 2000);
       } else {
-        toast.error("Error confirming user");
+        toast.error("User update failed");
       }
     } catch (error) {
-      toast.error("Please try again");
+      console.error(error);
+      toast.error("Something went wrong. Please try again.");
     }
   }
 
   return (
     <>
       <Helmet>
-        <title>User-Confirm Page</title>
+        <title>User Checkout Confirmation</title>
       </Helmet>
       <Toaster />
       <div className="userconfirm">
