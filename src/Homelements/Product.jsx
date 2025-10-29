@@ -6,7 +6,7 @@ import { useCart } from "react-use-cart";
 import { Link, useNavigate } from "react-router-dom";
 
 function Products({ searchQuery }) {
-   
+     const userId = localStorage.getItem("Ids");
     const Id =localStorage.getItem("Ids")
       const Transfer = useNavigate()
 
@@ -49,12 +49,15 @@ function Products({ searchQuery }) {
   const product = products.find((p) => p._id === id);
 
   try {
-    const cartRes = await fetch("https://main-projectnode.vercel.app/cart/Get");
+    const cartRes = await fetch(`https://main-projectnode.vercel.app/cart/Get/${userId}`);
     const cartItems = await cartRes.json();
     const Carturl = cartItems.Data || [];
 
-    // ✅ Compare using product.id, not _id
-    const existingItem = Carturl.find((item) => item.id === id);
+    // ✅ Match by ProductName
+    const existingItem = Carturl.find(
+      (item) => item.ProductName === product.ProductName
+    );
+
 
     let response;
 
@@ -67,11 +70,13 @@ function Products({ searchQuery }) {
           ProductQuantity: existingItem.ProductQuantity + 1,
         }),
       });
+      console.log(existingItem)
     } else {
       response = await fetch("https://main-projectnode.vercel.app/cart/Post", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
+          userId,
           ProductName: product.ProductName,
           ProductPrice: product.ProductPrice,
           ProductImage: product.ProductImage,
@@ -79,7 +84,6 @@ function Products({ searchQuery }) {
           ProductDescription: product.ProductDescription || "",
           ProductBrand: product.ProductBrand || "",
           ProductQuantity: 1,
-          id: product._id, // product reference
         }),
       });
     }
@@ -116,9 +120,9 @@ function Products({ searchQuery }) {
         {filteredProducts.length > 0 ? (
         filteredProducts.map((product) => (
           <div key={product._id} className="category-products">
-            <Link to={`/productdeatailes/${product.ProductName}`}>
+            <Link to={`/productdeatailes/${product.slug}`}>
             <div className="category-image">
-             <Link to={`/productdeatailes/${product.ProductName}`}>
+             <Link to={`/productdeatailes/${product.slug}`}>
              <img src={product.ProductImage} alt={product.ProductName} />
              </Link>
             </div>

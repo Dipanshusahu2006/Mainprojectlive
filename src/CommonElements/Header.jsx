@@ -5,6 +5,7 @@ import Shooping from "../Images/Shooping.png";
 import { useCart } from "react-use-cart";
 
 function Header({ setSearchQuery }) {
+  const userId = localStorage.getItem("Ids");
   const [input, setInput] = useState("");
   const inputRef = useRef(null);
 
@@ -65,7 +66,7 @@ function Header({ setSearchQuery }) {
 
   const Cart = useCallback(async () => {
     try {
-      const Cartnumber = await fetch("https://main-projectnode.vercel.app/cart/Get");
+      const Cartnumber = await fetch(`https://main-projectnode.vercel.app/cart/Get/${userId}`);
       const Cartitems = await Cartnumber.json();
       setCartnumbers(Cartitems.Data || []);
     } catch (err) {
@@ -75,7 +76,7 @@ function Header({ setSearchQuery }) {
 
   const Bells = useCallback(async () => {
     try {
-      const Bellnumber = await fetch("https://main-projectnode.vercel.app/adminreply/Get");
+      const Bellnumber = await fetch(`https://main-projectnode.vercel.app/adminreply/Get/${userId}`);
       const Bellitems = await Bellnumber.json();
       setBelll(Bellitems.Data || []);
     } catch (err) {
@@ -277,11 +278,10 @@ function Header({ setSearchQuery }) {
           <img src={slicenurl.profileimage} alt="User profile" />
           <i className="fa-solid fa-camera"></i>
         </div>
-        <h2>{slicenurl.username}</h2>
-        <h3>{slicenurl.email}</h3>
-        <h3>{slicenurl.password}</h3>
-        <h3>{slicenurl.phone}</h3>
-        <h3>{slicenurl.role}</h3>
+        <h2>UsernameName:    {slicenurl.username}</h2>
+        <h3>Useremail:     {slicenurl.email}</h3>
+        <h3>Userphone:     {slicenurl.phone}</h3>
+        <h3>Userole:        {slicenurl.role}</h3>
 
         <div className="Editbutone">
           <button>

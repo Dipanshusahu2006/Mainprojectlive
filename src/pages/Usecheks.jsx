@@ -7,7 +7,7 @@ import { Helmet } from "react-helmet";
 function Usermailecheks() {
   const navigate = useNavigate();
   const Id = localStorage.getItem("Ids");
-
+   const userId = localStorage.getItem("Ids");
   const [Cartdata, setCartdata] = useState([]);
   const [email, setEmail] = useState("");
   const [number, setNumber] = useState("");
@@ -39,7 +39,7 @@ function Usermailecheks() {
 
   async function Cartsdata() {
     try {
-      const response = await fetch("https://main-projectnode.vercel.app/cart/Get");
+      const response = await fetch(`https://main-projectnode.vercel.app/cart/Get/${userId}`);
       const cartspost = await response.json();
       setCartdata(cartspost.Data || []);
     } catch {
@@ -72,6 +72,7 @@ function Usermailecheks() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
+          userId,
           username,
           email,
           address: `${Useradderss}, ${userstate}, ${userpincode}`,
@@ -93,7 +94,7 @@ function Usermailecheks() {
         throw new Error("Order creation failed");
       }
 
-      await fetch("https://main-projectnode.vercel.app/cart/Delete", {
+      await fetch(`https://main-projectnode.vercel.app/cart/Delete/${userId}`, {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
       });

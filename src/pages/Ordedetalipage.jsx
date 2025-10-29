@@ -11,7 +11,7 @@ import {
 
 function OrderDetails() {
   const [order, setOrder] = useState(null);
-  const { id } = useParams();
+  const { Ordername } = useParams();
 
   useEffect(() => {
     const fetchOrderDetails = async () => {
@@ -28,7 +28,7 @@ function OrderDetails() {
           }))
         );
 
-        const foundProduct = allProducts.find((p) => p._id === id);
+        const foundProduct = allProducts.find((p) => p.ProductName === Ordername);
         setOrder(foundProduct || null);
       } catch (error) {
         console.error("Error fetching order:", error);
@@ -36,7 +36,7 @@ function OrderDetails() {
     };
 
     fetchOrderDetails();
-  }, [id]);
+  }, [Ordername]);
 
   if (!order) return <h2 style={{ textAlign: "center" }}>Loading order details...</h2>;
 

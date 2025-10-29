@@ -3,6 +3,7 @@ import "../App.css";
 import toast, { Toaster } from "react-hot-toast";
 
 function Enqries() {
+  const userId = localStorage.getItem("Ids");
   const [CustomerName, setCustomerName] = useState("");
   const [Emaileaddress, setEmaileaddress] = useState("");
   const [BillNumber, setBillNumber] = useState("");
@@ -16,6 +17,7 @@ function Enqries() {
 
   async function FetchEnquries() {
     const Enquirydata = {
+      userId,
       CustomerName,
       Emaileaddress,
       BillNumber,

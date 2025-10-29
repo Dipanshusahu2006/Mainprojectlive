@@ -5,12 +5,13 @@ import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
 
 function OrderStatus() {
+   const userId = localStorage.getItem("Ids");
   const [orders, setOrders] = useState([]);
   const [search, setSearch] = useState("");
 
   async function fetchOrders() {
     try {
-      const res = await fetch("https://main-projectnode.vercel.app/order/Get");
+      const res = await fetch(`https://main-projectnode.vercel.app/order/Get/${userId}`);
       const data = await res.json();
       const Ordersdatas = data.Data || [];
 
@@ -21,7 +22,7 @@ function OrderStatus() {
           username: order.username,
         }))
       );
-
+       console.log(formattedOrders);
       setOrders(formattedOrders);
     } catch (error) {
       console.error("Error fetching orders:", error);
@@ -68,7 +69,7 @@ function OrderStatus() {
         <div className="order-list">
           {filteredOrders.length > 0 ? (
             filteredOrders.map((order, index) => (
-              <Link to={`/OrderDetails/${order._id}`} key={index}>
+              <Link to={`/OrderDetails/${order.ProductName}`} key={index}>
                 <div className="order-card">
                   <img src={order.ProductImage} alt={order.ProductName} />
                   <div className="order-details">

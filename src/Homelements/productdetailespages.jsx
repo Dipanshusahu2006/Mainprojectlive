@@ -11,19 +11,19 @@ import { Helmet } from "react-helmet";
 
 export default function ProductDetails() {
   const { addItem } = useCart();
-  const { ProductName } = useParams();
+  const { slug } = useParams();
 
   const [product, setProduct] = useState(null);
   const [wishlist, setWishlist] = useState({});
   const [loading, setLoading] = useState(true);
 
-  const decodedName = decodeURIComponent(ProductName);
+  
 
   // ✅ Use useCallback to avoid ESLint missing dependency warning
   const fetchProductDetails = useCallback(async () => {
     try {
       const res = await fetch(
-        `https://main-projectnode.vercel.app/product/Get/${decodedName}`
+        `https://main-projectnode.vercel.app/product/slug/${slug}`
       );
       const data = await res.json();
       setProduct(data.Data || {});
@@ -33,12 +33,12 @@ export default function ProductDetails() {
     } finally {
       setLoading(false);
     }
-  }, [decodedName]);
+  }, [slug]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    if (decodedName) fetchProductDetails();
-  }, [decodedName, fetchProductDetails]);
+    if (slug) fetchProductDetails();
+  }, [slug, fetchProductDetails]);
 
   const handleWishlist = (productId) => {
     setWishlist((prev) => ({ ...prev, [productId]: true }));

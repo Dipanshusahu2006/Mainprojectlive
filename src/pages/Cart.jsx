@@ -6,6 +6,7 @@ import { Helmet } from "react-helmet";
 import { useNavigate } from "react-router-dom";
 
 function Productcart() {
+  const userId = localStorage.getItem("Ids");
   const Id = localStorage.getItem("Ids");
   const tranfer = useNavigate();
   const [Cartproduct, setCartproduct] = useState([]);
@@ -27,7 +28,7 @@ function Productcart() {
   // ✅ Wrap CartProducts too
   const CartProducts = useCallback(async () => {
     try {
-      const res = await fetch("https://main-projectnode.vercel.app/cart/Get");
+      const res = await fetch(`https://main-projectnode.vercel.app/cart/Get/${userId}`);
       const data = await res.json();
       setCartproduct(data.Data || []);
     } catch (error) {

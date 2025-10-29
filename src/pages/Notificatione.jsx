@@ -4,11 +4,12 @@ import Header from "../CommonElements/Header";
 import { Helmet } from "react-helmet";
 
 function MyEnquiries() {
+  const userId = localStorage.getItem("Ids");
   const [Notificitione, setNotificitione] = useState([]);
 
   const fetchReply = async () => {
     try {
-      const AdminReply = await fetch("https://main-projectnode.vercel.app/adminreply/Get");
+      const AdminReply = await fetch(`https://main-projectnode.vercel.app/adminreply/Get/${userId}`);
       const Replydata = await AdminReply.json();
       setNotificitione(Replydata.Data || []);
     } catch (error) {

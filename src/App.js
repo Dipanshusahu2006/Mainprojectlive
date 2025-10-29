@@ -34,7 +34,7 @@ function App() {
           <Route path="/About" element={<About Userid={id} />} />
           <Route path="/Service" element={<Service Userid={id} />} />
           <Route path="/productcart" element={<Productcart />} />
-          <Route path="/productdeatailes/:ProductName" element={<ProductDetails />} />
+          <Route path="/productdeatailes/:slug" element={<ProductDetails />} />
           <Route path="/EditUser" element={<EditUser />} />
           <Route path="/Products" element={<Products />} />
           <Route path="/whislist" element={<Whislist />} />
@@ -42,7 +42,7 @@ function App() {
           <Route path="/Qrcode" element={<Qrcode />} />
            <Route path="/ProfileCheck" element={<Usermailecheks />} />
            <Route path="/order" element={<OrderStatus/>} />
-           <Route path="/OrderDetails/:id" element={<OrderDetails />} />
+           <Route path="/OrderDetails/:Ordername" element={<OrderDetails />} />
         </Routes>
       </BrowserRouter>
     </CartProvider>
