@@ -19,7 +19,7 @@ function MyEnquiries() {
    
   useEffect(() => {
     fetchReply();
-  }, []);
+  }, [fetchReply]);
 
   return (
     <>

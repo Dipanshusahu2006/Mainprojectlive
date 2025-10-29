@@ -72,7 +72,7 @@ function Header({ setSearchQuery }) {
     } catch (err) {
       console.error("Cart fetch failed:", err);
     }
-  }, []);
+  }, [userId]);
 
   const Bells = useCallback(async () => {
     try {
@@ -82,7 +82,7 @@ function Header({ setSearchQuery }) {
     } catch (err) {
       console.error("Bell fetch failed:", err);
     }
-  }, []);
+  }, [userId]);
 
   useEffect(() => {
     Profiles();

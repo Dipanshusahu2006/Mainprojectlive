@@ -34,7 +34,7 @@ function Productcart() {
     } catch (error) {
       console.error("Error fetching cart:", error);
     }
-  }, []); // ✅ no dependencies, stable forever
+  }, [userId]); // ✅ no dependencies, stable forever
 
   const updateQuantity = async (id, newQuantity) => {
     if (newQuantity < 1) return;
