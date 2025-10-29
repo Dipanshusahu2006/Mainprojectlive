@@ -31,7 +31,7 @@ function OrderStatus() {
 
   useEffect(() => {
     fetchOrders();
-  }, [fetchOrders]);
+  }, [userId]);
 
   // Filter by product name or username
   const filteredOrders = orders.filter(
