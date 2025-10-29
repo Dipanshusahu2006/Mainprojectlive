@@ -6,102 +6,143 @@ import { Helmet } from "react-helmet";
 
 function Usermailecheks() {
   const navigate = useNavigate();
-  const Id = localStorage.getItem("Ids");
-   const userId = localStorage.getItem("Ids");
-  const [Cartdata, setCartdata] = useState([]);
-  const [email, setEmail] = useState("");
-  const [number, setNumber] = useState("");
-  const [Useradderss, setUseradderss] = useState("");
-  const [userpincode, setuserpincode] = useState("");
-  const [userstate, setuserstate] = useState("");
-  const [username, setUsername] = useState("");
 
+  const userId = localStorage.getItem("Ids");
+
+  const [Cartdata, setCartdata] = useState([]);
+  const [form, setForm] = useState({
+    email: "",
+    phone: "",
+    Useraddress: "",
+    Userpincode: "",
+    Userstate: "",
+    username: "",
+  });
+
+  // ✅ Handle input
+  const updateField = (key, value) => {
+    setForm((prev) => ({ ...prev, [key]: value }));
+  };
+
+  // ✅ Fetch User + Cart Data
   useEffect(() => {
-    if (!Id) return;
-    const fetchConfirmData = async () => {
+    if (!userId) return;
+
+    const fetchUserData = async () => {
       try {
-        const response = await fetch(`https://main-projectnode.vercel.app/user/Get/${Id}`);
-        const data = await response.json();
+        const res = await fetch(
+          `https://main-projectnode.vercel.app/user/Get/${userId}`
+        );
+        const data = await res.json();
         const users = data?.Data || {};
-        setEmail(users.email || "");
-        setNumber(users.phone || "");
-        setUseradderss(users.Useraddress || "");
-        setuserpincode(users.Userpincode || "");
-        setuserstate(users.Userstate || "");
-        setUsername(users.username || "Guest");
+
+        setForm({
+          email: users.email || "",
+          phone: users.phone || "",
+          Useraddress: users.Useraddress || "",
+          Userpincode: users.Userpincode || "",
+          Userstate: users.Userstate || "",
+          username: users.username || "Guest",
+        });
       } catch {
         toast.error("Failed to load user info");
       }
     };
-    fetchConfirmData();
-    Cartsdata();
-  }, [Id ,userId]);
 
-  async function Cartsdata() {
-    try {
-      const response = await fetch(`https://main-projectnode.vercel.app/cart/Get/${userId}`);
-      const cartspost = await response.json();
-      setCartdata(cartspost.Data || []);
-    } catch {
-      toast.error("Error fetching cart data");
-    }
-  }
+    const fetchCartData = async () => {
+      try {
+        const res = await fetch(
+          `https://main-projectnode.vercel.app/cart/Get/${userId}`
+        );
+        const data = await res.json();
+        setCartdata(data?.Data || []);
+      } catch {
+        toast.error("Error fetching cart data");
+      }
+    };
 
+    fetchUserData();
+    fetchCartData();
+  }, [userId]);
+
+  // ✅ Confirm checkout
   async function Confirmforms() {
-    if (!email || !number || !Useradderss) {
+    const { email, phone, Useraddress, Userpincode, Userstate, username } = form;
+
+    // Validate
+    if (!email || !phone || !Useraddress) {
       toast.error("Please fill all required details");
       return;
     }
 
-    const ConfirmsUsers = {
+    // ✅ Body for updating user profile
+    const UpdateUser = {
       email: email.trim(),
-      phone: number.trim(),
-      Useraddress: Useradderss.trim(),
-      Userpincode: userpincode.trim(),
-      Userstate: userstate.trim(),
+      phone: phone.trim(),
+      Useraddress: Useraddress.trim(),
+      Userpincode: Userpincode.trim(),
+      Userstate: Userstate.trim(),
+    };
+
+    // ✅ Create order post structure
+    const OrderBody = {
+      userId,
+      username,
+      email,
+      address: `${Useraddress}, ${Userstate}, ${Userpincode}`,
+      products: Cartdata.map((item) => ({
+        ProductName: item.ProductName,
+        ProductImage: item.ProductImage,
+        ProductPrice: Number(item.ProductPrice),
+        ProductCategory: item.ProductCategory,
+        ProductQuantity: item.ProductQuantity,
+      })),
+      TotalAmount: Cartdata.reduce(
+        (sum, item) => sum + Number(item.ProductPrice) * item.ProductQuantity,
+        0
+      ),
     };
 
     try {
-      const Profilecheck = await fetch(`https://main-projectnode.vercel.app/user/Edit/${Id}`, {
-        method: "PUT",
-        body: JSON.stringify(ConfirmsUsers),
-        headers: { "Content-Type": "application/json" },
-      });
+      // ✅ Update profile
+      const profileRes = await fetch(
+        `https://main-projectnode.vercel.app/user/Edit/${userId}`,
+        {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(UpdateUser),
+        }
+      );
 
-      const OrderRes = await fetch("https://main-projectnode.vercel.app/order/Post", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          userId,
-          username,
-          email,
-          address: `${Useradderss}, ${userstate}, ${userpincode}`,
-          products: Cartdata.map((item) => ({
-            ProductName: item.ProductName,
-            ProductImage: item.ProductImage,
-            ProductPrice: Number(item.ProductPrice),
-            ProductCategory: item.ProductCategory,
-            ProductQuantity: item.ProductQuantity,
-          })),
-          TotalAmount: Cartdata.reduce(
-            (sum, item) => sum + Number(item.ProductPrice) * item.ProductQuantity,
-            0
-          ),
-        }),
-      });
+      // ✅ Create order
+      const orderRes = await fetch(
+        `https://main-projectnode.vercel.app/order/Post`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(OrderBody),
+        }
+      );
 
-      if (!OrderRes.ok) {
+      if (!orderRes.ok) {
         throw new Error("Order creation failed");
       }
 
-      await fetch(`https://main-projectnode.vercel.app/cart/Delete/${userId}`, {
-        method: "DELETE",
-        headers: { "Content-Type": "application/json" },
-      });
+      // ✅ Delete cart
+      await fetch(
+        `https://main-projectnode.vercel.app/cart/Delete/${userId}`,
+        {
+          method: "DELETE",
+          headers: { "Content-Type": "application/json" },
+        }
+      );
 
-      if (Profilecheck.ok) {
+      if (profileRes.ok) {
         toast.success("Order confirmed successfully!");
-        setTimeout(() => navigate("/Qrcode"), 2000);
+
+        setTimeout(() => {
+          navigate("/Qrcode");
+        }, 2000);
       } else {
         toast.error("User update failed");
       }
@@ -116,54 +157,57 @@ function Usermailecheks() {
       <Helmet>
         <title>User Checkout Confirmation</title>
       </Helmet>
+
       <Toaster />
+
       <div className="userconfirm">
         <div className="congirm">
-          <h1>Checkout process form</h1>
+          <h1>Checkout Process Form</h1>
+
+          {/* email */}
           <label>Email:</label>
           <input
-            placeholder="Enter your email"
             type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Enter your email"
+            value={form.email}
+            onChange={(e) => updateField("email", e.target.value)}
           />
-          <br /><br />
 
+          {/* phone */}
           <label>Number:</label>
           <input
-            placeholder="Enter your number"
             type="number"
-            value={number}
-            onChange={(e) => setNumber(e.target.value)}
+            placeholder="Enter your number"
+            value={form.phone}
+            onChange={(e) => updateField("phone", e.target.value)}
           />
-          <br /><br />
 
+          {/* address */}
           <label>Address:</label>
           <input
-            placeholder="Enter your address"
             type="text"
-            value={Useradderss}
-            onChange={(e) => setUseradderss(e.target.value)}
+            placeholder="Enter your address"
+            value={form.Useraddress}
+            onChange={(e) => updateField("Useraddress", e.target.value)}
           />
-          <br /><br />
 
+          {/* pincode */}
           <label>Pincode:</label>
           <input
-            placeholder="Enter your pincode"
             type="text"
-            value={userpincode}
-            onChange={(e) => setuserpincode(e.target.value)}
+            placeholder="Enter your pincode"
+            value={form.Userpincode}
+            onChange={(e) => updateField("Userpincode", e.target.value)}
           />
-          <br /><br />
 
+          {/* state */}
           <label>State:</label>
           <input
-            placeholder="Enter your state"
             type="text"
-            value={userstate}
-            onChange={(e) => setuserstate(e.target.value)}
+            placeholder="Enter your state"
+            value={form.Userstate}
+            onChange={(e) => updateField("Userstate", e.target.value)}
           />
-          <br /><br />
 
           <button onClick={Confirmforms}>Confirm to Checkout</button>
         </div>

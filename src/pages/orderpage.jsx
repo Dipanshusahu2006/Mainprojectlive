@@ -1,42 +1,45 @@
-import React, { useEffect, useState } from "react";
-import '../App.css';
+import React, { useEffect, useState, useCallback } from "react";
+import "../App.css";
 import Header from "../CommonElements/Header";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
 
 function OrderStatus() {
-   const userId = localStorage.getItem("Ids");
+  const userId = localStorage.getItem("Ids");
   const [orders, setOrders] = useState([]);
   const [search, setSearch] = useState("");
 
-  async function fetchOrders() {
+  // ✅ Wrap fetchOrders with useCallback so it doesn't recreate on every render
+  const fetchOrders = useCallback(async () => {
     try {
-      const res = await fetch(`https://main-projectnode.vercel.app/order/Get/${userId}`);
+      const res = await fetch(
+        `https://main-projectnode.vercel.app/order/Get/${userId}`
+      );
       const data = await res.json();
       const Ordersdatas = data.Data || [];
 
-      // Flatten the orders cleanly
-      const formattedOrders = Ordersdatas.flatMap(order =>
-        (order.products || []).map(product => ({
+      const formattedOrders = Ordersdatas.flatMap((order) =>
+        (order.products || []).map((product) => ({
           ...product,
           username: order.username,
         }))
       );
-       console.log(formattedOrders);
+
+      console.log(formattedOrders);
       setOrders(formattedOrders);
     } catch (error) {
       console.error("Error fetching orders:", error);
     }
-  }
+  }, [userId]);
 
   useEffect(() => {
     fetchOrders();
-  }, [userId]);
+  }, [fetchOrders]);
 
-  // Filter by product name or username
+  // ✅ Filter by product name or username
   const filteredOrders = orders.filter(
     (order) =>
-      order.ProductName.toLowerCase().includes(search.toLowerCase()) ||
+      order.ProductName?.toLowerCase().includes(search.toLowerCase()) ||
       order.username?.toLowerCase().includes(search.toLowerCase())
   );
 
@@ -55,6 +58,7 @@ function OrderStatus() {
       </Helmet>
 
       <Header />
+
       <div className="orders-container">
         <div className="search-bar">
           <input
@@ -72,12 +76,16 @@ function OrderStatus() {
               <Link to={`/OrderDetails/${order.ProductName}`} key={index}>
                 <div className="order-card">
                   <img src={order.ProductImage} alt={order.ProductName} />
+
                   <div className="order-details">
                     <h3>{order.ProductName}</h3>
                     <p className="price">₹{order.ProductPrice}</p>
                     <p className="category">{order.ProductCategory}</p>
-                    <small className="username">Ordered by: {order.username}</small>
+                    <small className="username">
+                      Ordered by: {order.username}
+                    </small>
                   </div>
+
                   <div className="order-status">
                     <span
                       className={`status-dot ${
@@ -88,7 +96,11 @@ function OrderStatus() {
                           : "red"
                       }`}
                     ></span>
-                    <p><b>Status: {order.Status}</b></p>
+
+                    <p>
+                      <b>Status: {order.Status}</b>
+                    </p>
+
                     <p className="reason">
                       {order.Status === "Pending"
                         ? "Your order is being processed"
