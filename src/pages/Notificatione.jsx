@@ -5,42 +5,66 @@ import { Helmet } from "react-helmet";
 
 function MyEnquiries() {
   const userId = localStorage.getItem("Ids");
-  const [Notificitione, setNotificitione] = useState([]);
+  const [notifications, setNotifications] = useState([]);
 
   useEffect(() => {
     const fetchReply = async () => {
       try {
-        const AdminReply = await fetch(
+        const response = await fetch(
           `https://main-projectnode.vercel.app/adminreply/Get/${userId}`
         );
-        const Replydata = await AdminReply.json();
-        setNotificitione(Replydata.Data || []);
+        const data = await response.json();
+        setNotifications(data.Data || []);
       } catch (error) {
-        console.error("Failed to fetch products:", error);
+        console.error("Failed to fetch replies:", error);
       }
     };
 
     fetchReply();
-  }, [userId]); // ✅ only depend on userId
+  }, [userId]);
 
   return (
     <>
       <Helmet>
-        <title>My Notifications</title>
+        <title>My Notifications | MyShop</title>
       </Helmet>
+
       <Header />
+
       <div className="AdminsReply">
-        <h1>Admin reply</h1>
-        <div className="Enqries-reply">
-          {Notificitione.map((Reply, index) => (
-            <div className="Enquirynotificatione" key={index}>
-              <h1>To {Reply.CustomerName}</h1>
-              <h3>{Reply.Emaileaddress}</h3>
-              <p>{Reply.Reply}</p>
-              <h4>For Owner</h4>
-            </div>
-          ))}
-        </div>
+        <h1>Admin Notifications</h1>
+
+        {notifications.length === 0 ? (
+          <p className="no-replies">No notifications found</p>
+        ) : (
+          <div className="Enqries-reply">
+            {notifications.map((reply, index) => {
+              const date = reply.createdAt
+                ? new Date(reply.createdAt).toLocaleDateString()
+                : "—";
+              const time = reply.createdAt
+                ? new Date(reply.createdAt).toLocaleTimeString([], {
+                    hour: "2-digit",
+                    minute: "2-digit",
+                  })
+                : "";
+
+              return (
+                <div className="Enquirynotificatione" key={index}>
+                  <div className="notification-header">
+                    <h2>To: {reply.CustomerName}</h2>
+                    <small className="notif-date">
+                      {date} • {time}
+                    </small>
+                  </div>
+                  <h4>{reply.Emaileaddress}</h4>
+                  <p>{reply.Reply}</p>
+                  <h5>— Admin Team</h5>
+                </div>
+              );
+            })}
+          </div>
+        )}
       </div>
     </>
   );

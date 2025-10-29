@@ -3141,57 +3141,205 @@ background: linear-gradient(135deg, #228b22, #2ecc71);
    ke liye styling.
    =============================== */
 
+/* ✅ MAIN WRAPPER */
 .cart-container {
-  padding: 20px;
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 0 16px;
+  font-family: Arial, sans-serif;
 }
 
+/* ✅ WISHLIST HEADER */
+.cart-container h1 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* ✅ ITEMS LIST */
 .cart-items {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 18px;
 }
 
+/* ✅ SINGLE ITEM CARD */
 .cart-item {
   display: flex;
-  gap: 20px;
-  border: 1px solid #ccc;
-  padding: 10px;
+  gap: 18px;
+  background: #fff;
+  border: 1px solid #eee;
+  padding: 16px;
   border-radius: 10px;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.07);
+  transition: 0.2s ease-in-out;
 }
 
+.cart-item:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(0,0,0,0.12);
+}
+
+/* ✅ PRODUCT IMAGE */
 .cart-item-image {
   width: 120px;
-  height: auto;
+  height: 120px;
   object-fit: contain;
+  border-radius: 8px;
 }
 
+/* ✅ TEXT + ACTIONS */
 .cart-item-details {
-  flex-grow: 1;
+  flex: 1;
 }
 
+/* ✅ TITLE */
+.cart-item-details h3 {
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+/* ✅ PRICE */
+.cart-item-details p {
+  font-size: 16px;
+  font-weight: 500;
+  color: #444;
+  margin-bottom: 6px;
+}
+
+/* ✅ QUANTITY CONTROLS */
 .quantity-controls {
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-top: 10px;
+  margin: 10px 0;
 }
 
-.remove-btn, .checkout-btn, .clear-btn {
-  margin-top: 10px;
-  padding: 8px 14px;
-  border: none;
-  border-radius: 5px;
-  background-color: #ff4d4f;
-  color: white;
+.quantity-controls button {
+  width: 32px;
+  height: 30px;
+  font-size: 18px;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
   cursor: pointer;
 }
 
-.checkout-btn {
-  background-color: #33cc33;
+.quantity-controls button:hover {
+  background: #f4f4f4;
 }
 
+.quantity-controls span {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* ✅ BTN STYLES */
+.remove-btn,
+.checkout-btn,
+.clear-btn {
+  margin-top: 8px;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+/* remove */
+.remove-btn {
+  background-color: #ff4d4f;
+  color: white;
+}
+
+.remove-btn:hover {
+  background: #e63940;
+}
+
+/* checkout */
+.checkout-btn {
+  background-color: #33cc33;
+  color: white;
+}
+
+.checkout-btn:hover {
+  background: #2db82d;
+}
+
+/* clear */
 .clear-btn {
   background-color: #999;
+  color: white;
+}
+
+.clear-btn:hover {
+  background: #7c7c7c;
+}
+
+/* ✅ SUMMARY CARD */
+.cart-summary {
+  margin-top: 30px;
+  padding: 16px;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+  text-align: center;
+}
+
+/* ✅ SUMMARY TEXT */
+.cart-summary h2 {
+  margin-bottom: 12px;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+/* ✅ EMPTY CART MESSAGE */
+.empty-cart {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 22px;
+  font-weight: bold;
+  color: #777;
+}
+
+/* ✅ RESPONSIVE BREAKPOINTS */
+
+/* Tablet & below */
+@media (max-width: 768px) {
+  .cart-item {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .cart-item-image {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 10px;
+  }
+
+  .quantity-controls {
+    justify-content: center;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .cart-item-image {
+    width: 130px;
+    height: 130px;
+  }
+
+  .cart-summary h2 {
+    font-size: 20px;
+  }
+
+  .checkout-btn,
+  .clear-btn {
+    width: 100%;
+  }
 }
 
 /* ===============================
@@ -3201,86 +3349,121 @@ background: linear-gradient(135deg, #228b22, #2ecc71);
    ke liye styling.
    =============================== */
 /* Main container */
+/* --- Container --- */
 .AdminsReply {
   padding: 20px;
-  max-width: 900px;
-  margin: auto;
-  background: #f9f9f9;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  max-width: 1000px;
+  margin: 40px auto;
+  background: #f7f9fc;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.07);
+  font-family: "Inter", Arial, sans-serif;
 }
 
-/* Page heading */
+/* --- Page title --- */
 .AdminsReply > h1 {
-  font-size: 28px;
   text-align: center;
-  margin-bottom: 20px;
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 30px;
   color: #333;
-  font-weight: 600;
 }
 
-/* Replies container */
+/* --- No replies message --- */
+.no-replies {
+  text-align: center;
+  color: #777;
+  font-size: 18px;
+  margin-top: 20px;
+}
+
+/* --- Grid layout --- */
 .Enqries-reply {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 15px;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: 18px;
 }
 
-/* Single notification card */
+/* --- Single notification card --- */
 .Enquirynotificatione {
-  background: white;
-  padding: 16px 20px;
-  border-radius: 10px;
-  border-left: 5px solid #4cafef;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  background: #fff;
+  padding: 18px 20px;
+  border-left: 6px solid #4cafef;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+  transition: all 0.25s ease;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  justify-content: space-between;
 }
 
 .Enquirynotificatione:hover {
   transform: translateY(-4px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
 }
 
-/* Titles and text */
-.Enquirynotificatione h1 {
-  font-size: 20px;
-  margin: 0;
+/* --- Header section --- */
+.notification-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.notification-header h2 {
+  font-size: 18px;
   color: #4cafef;
-}
-
-.Enquirynotificatione h3 {
-  font-size: 14px;
-  color: #666;
   margin: 0;
 }
 
-.Enquirynotificatione p {
-  font-size: 16px;
-  color: #444;
-  line-height: 1.4;
+.notif-date {
+  font-size: 13px;
+  color: #777;
 }
 
+/* --- Email --- */
 .Enquirynotificatione h4 {
   font-size: 14px;
-  color: #999;
-  margin-top: auto;
-  text-align: right;
+  color: #666;
+  margin: 8px 0;
 }
 
-/* Responsive adjustments */
-@media (max-width: 500px) {
+/* --- Message text --- */
+.Enquirynotificatione p {
+  font-size: 15px;
+  color: #333;
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+/* --- Footer --- */
+.Enquirynotificatione h5 {
+  font-size: 13px;
+  color: #999;
+  text-align: right;
+  margin: 0;
+}
+
+/* --- Responsive adjustments --- */
+@media (max-width: 600px) {
   .AdminsReply {
-    padding: 15px;
+    padding: 16px;
   }
+
+  .notification-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .notification-header h2 {
+    font-size: 17px;
+  }
+
   .Enquirynotificatione {
-    padding: 12px;
-  }
-  .Enquirynotificatione h1 {
-    font-size: 18px;
+    padding: 14px;
   }
 }
+
 
 /* ===============================
    CSS File: Profile Page Styles
