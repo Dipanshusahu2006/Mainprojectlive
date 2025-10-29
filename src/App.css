@@ -2923,6 +2923,7 @@ background: linear-gradient(135deg, #228b22, #2ecc71);
    ke liye styling.
    =============================== */
 
+/* ✅ CART MAIN CONTAINER */
 .cart-container {
   display: flex;
   justify-content: space-between;
@@ -2930,8 +2931,10 @@ background: linear-gradient(135deg, #228b22, #2ecc71);
   max-width: 1200px;
   margin: 30px auto;
   font-family: Arial, sans-serif;
+  padding: 0 15px;
 }
 
+/* ✅ LEFT CART LIST PANEL */
 .cart-items-section {
   flex: 2;
   background: #fff;
@@ -2946,11 +2949,13 @@ background: linear-gradient(135deg, #228b22, #2ecc71);
   font-weight: bold;
 }
 
+/* ✅ INDIVIDUAL PRODUCT CARD */
 .cart-item {
   display: flex;
   align-items: center;
   border-top: 1px solid #f0f0f0;
   padding: 15px 0;
+  gap: 15px;
 }
 
 .cart-item:first-child {
@@ -2961,50 +2966,63 @@ background: linear-gradient(135deg, #228b22, #2ecc71);
   width: 100px;
   height: auto;
   object-fit: contain;
-  margin-right: 20px;
 }
 
-
+/* ✅ PRODUCT INFO */
 .cart-item-details {
   flex: 1;
 }
 
-.cart-item-name {
+.cart-item-details h4 {
   font-size: 16px;
   font-weight: bold;
   margin-bottom: 4px;
 }
 
-.cart-item-category {
+.cart-item-details p {
+  margin: 4px 0;
   font-size: 14px;
-  color: #666;
-  margin-bottom: 6px;
+  color: #444;
 }
 
-.cart-item-price {
-  font-size: 16px;
-  color: #000;
-  margin-bottom: 4px;
+/* ✅ QUANTITY CONTROLS */
+.productscart {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-.cart-item-quantity {
+.btnincrese,
+.btndecrese {
+  border: 1px solid #ddd;
+  background: #fff;
+  width: 26px;
+  height: 26px;
+  border-radius: 4px;
+  cursor: pointer;
   font-size: 14px;
-  color: #555;
 }
 
+.btnincrese:hover,
+.btndecrese:hover {
+  background: #f0f0f0;
+}
+
+/* ✅ DELETE BUTTON */
 .remove-button {
   background: none;
   border: none;
-  color: #2874f0;
+  color: #ff4f4f;
   font-size: 14px;
   cursor: pointer;
+  min-width: 60px;
 }
 
 .remove-button:hover {
   text-decoration: underline;
 }
 
-/* PRICE DETAILS */
+/* ✅ PRICE DETAILS BOX */
 .price-details-section {
   flex: 1;
   background: #fff;
@@ -3039,6 +3057,7 @@ background: linear-gradient(135deg, #228b22, #2ecc71);
   margin-top: 8px;
 }
 
+/* ✅ CHECKOUT BUTTON */
 .place-order-btn {
   margin-top: 20px;
   width: 100%;
@@ -3051,13 +3070,70 @@ background: linear-gradient(135deg, #228b22, #2ecc71);
   border-radius: 4px;
   cursor: pointer;
 }
-.place-order-btn a {
-  text-decoration: none;
-  color: white;
-}
+
 .place-order-btn:hover {
   background: #f4511e;
 }
+
+/* ✅ MOBILE RESPONSIVE */
+@media (max-width: 992px) {
+  .cart-container {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .cart-items-section {
+    width: 100%;
+  }
+
+  .price-details-section {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .cart-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+    padding: 15px 0;
+  }
+
+  .cart-item-image {
+    width: 140px;
+    margin-bottom: 10px;
+  }
+
+  .productscart {
+    gap: 5px;
+  }
+
+  .btnincrese,
+  .btndecrese {
+    width: 30px;
+    height: 30px;
+  }
+
+  h3 {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cart-item-image {
+    width: 120px;
+  }
+
+  .place-order-btn {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .price-row {
+    font-size: 13px;
+  }
+}
+
 /* ===============================
    CSS File: Wishlist Page Styles
    Description: User ke wishlist items,
