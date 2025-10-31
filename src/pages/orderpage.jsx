@@ -73,7 +73,7 @@ function OrderStatus() {
         <div className="order-list">
           {filteredOrders.length > 0 ? (
             filteredOrders.map((order, index) => (
-              <Link to={`/OrderDetails/${order.ProductName}`} key={index}>
+              <Link to={`/${order.ProductName}`} key={index}>
                 <div className="order-card">
                   <img src={order.ProductImage} alt={order.ProductName} />
 

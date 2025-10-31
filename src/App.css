@@ -995,7 +995,10 @@ width: 20px;
   font-weight: bold;
   color: black;
 }
-
+   
+.fa-circle-user{
+  font-size: 100px;
+}
 
 
 
@@ -2004,8 +2007,12 @@ transform: scale(1.2);
 
   .Hiddenprofilebuttone1{
    margin-top: 10px;
-    display: block !important;
+    
   }
+ .Hiddenprofilebuttone1,
+.Hiddenprofilebuttone2 {
+  display: block !important;
+}
 
   .logos .btn1, .logos .btn2 {
        display: none!important;
@@ -2136,8 +2143,18 @@ transform: scale(1.2);
 @media(max-width: 388px) {
 
   .Hiddenprofilebuttone1{
-   margin-top: 10px;
-    display: block !important;
+    margin-top: 4px !important;
+    margin-bottom: 5px !important;
+    padding: 0px 5px 0px 5px !important;
+  }
+   .Hiddenprofilebuttone1,
+.Hiddenprofilebuttone2 {
+  display: block;
+}
+
+  .Hiddenprofilebuttone1 i{
+    font-size: 21px !important;
+
   }
 
   .logos .btn1, .logos .btn2 {

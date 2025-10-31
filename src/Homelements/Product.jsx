@@ -120,9 +120,9 @@ function Products({ searchQuery }) {
         {filteredProducts.length > 0 ? (
         filteredProducts.map((product) => (
           <div key={product._id} className="category-products">
-            <Link to={`/productdeatailes/${product.slug}`}>
+            <Link to={`/${product.slug}`}>
             <div className="category-image">
-             <Link to={`/productdeatailes/${product.slug}`}>
+             <Link to={`/${product.slug}`}>
              <img src={product.ProductImage} alt={product.ProductName} />
              </Link>
             </div>

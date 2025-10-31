@@ -27,8 +27,7 @@ function Header({ setSearchQuery }) {
 
   const [buttne1, setbuttne1] = useState({ display: "block" });
   const [buttne2, setbuttne2] = useState({ display: "none" });
-  const [buttne3, setbuttne3] = useState({});
-  const [buttne4, setbuttne4] = useState({});
+  const [showMobileIcon, setShowMobileIcon] = useState(true);
   const [LoginButtone, setLoginButtone] = useState({});
   const [profiles, setprofile] = useState({ display: "none" });
   const [slicenurl, setslicenurl] = useState({});
@@ -42,6 +41,8 @@ function Header({ setSearchQuery }) {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  
 
   const toggleMenu = () => setMenuOpen((prev) => !prev);
 
@@ -105,22 +106,21 @@ function Header({ setSearchQuery }) {
   };
 
   const Slice3 = () => {
-    setbuttne3({ display: "none" });
-    setbuttne4({ display: "block" });
-    setprofile({ display: "block" });
-  };
+  setShowMobileIcon(false);
+  setprofile({ display: "block" });
+};
 
-  const Slice4 = () => {
-    setbuttne3({ display: "block" });
-    setbuttne4({ display: "none" });
-    setprofile({ display: "none" });
-  };
+const Slice4 = () => {
+  setShowMobileIcon(true);
+  setprofile({ display: "none" });
+};
 
   const Logout = () => {
     localStorage.removeItem("Ids");
     setbuttne1({ display: "none" });
     setbuttne2({ display: "none" });
     setprofile({ display: "none" });
+    setShowMobileIcon(true);
     setLoginButtone({ display: "block" });
   };
 
@@ -173,20 +173,15 @@ function Header({ setSearchQuery }) {
                   <i className="fa-solid fa-bell"></i>
                 </NavLink>
               </li>
-              <li
-                className="Hiddenprofilebuttone1"
-                onClick={Slice3}
-                style={buttne3}
-              >
-                <i className="fa-solid fa-user"></i>
-              </li>
-              <li
-                className="Hiddenprofilebuttone2"
-                onClick={Slice4}
-                style={buttne4}
-              >
-                <i className="fa-solid fa-user"></i>
-              </li>
+              {showMobileIcon ? (
+  <li className="Hiddenprofilebuttone1" onClick={Slice3}>
+    <i className="fa-regular fa-circle-user"></i>
+  </li>
+) : (
+  <li className="Hiddenprofilebuttone2" onClick={Slice4}>
+    <i className="fa-regular fa-circle-user"></i>
+  </li>
+)}
             </ul>
 
             {!Id ? (
