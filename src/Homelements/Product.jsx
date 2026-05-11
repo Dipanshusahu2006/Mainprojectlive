@@ -128,7 +128,7 @@ function Products({ searchQuery }) {
             </div>
             <h4>{product.ProductName}</h4>
             <h3>{product.ProductCategory}</h3>
-            <h2>${product.ProductPrice}</h2>
+            <h2>₹{product.ProductPrice}</h2>
             <Productssate />
             </Link>
             <button className="wishlist-btn" onClick={() => {

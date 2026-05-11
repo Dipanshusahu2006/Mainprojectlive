@@ -663,7 +663,7 @@ background-color: #0d8a50;
     border-radius: 4px;
     color: #fff;
     cursor: pointer;
-    padding: 4px 10px;
+    
 }
 .btndecrese{
 background-color: red;
@@ -671,7 +671,7 @@ background-color: red;
     border-radius: 4px;
     color: #fff;
     cursor: pointer;
-    padding: 4px 10px;
+    
 }
 .carts-button button{
     background-color: #3bb77e;
@@ -720,12 +720,16 @@ background-color: red;
  
 }
 .pd-left{
-  position: relative;
+   position: sticky;
+    top: 185px;
+    bottom: 0;
+    z-index: 2;
   border: 1px solid #f0f0f0;
+  height: 500px;
 }
 
 .pd-image {
-  max-width: 520px;
+  max-width: 500px;
   border-radius: 8px;
 }
 
@@ -998,6 +1002,124 @@ width: 20px;
    
 .fa-circle-user{
   font-size: 100px;
+}
+
+.similar-wrapper {
+  width: 100%;
+  background: #fff;
+  border-radius: 6px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  box-shadow: 0px 0px 4px rgba(0,0,0,0.1);
+}
+
+.similar-title {
+  font-weight: 500;
+    padding-left: 20px;
+    font-size: 22px;
+}
+
+/* Horizontal Scroll */
+.similar-list {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  overflow-x: auto;
+  padding-bottom: 10px;
+  scrollbar-width: thin;
+}
+
+.similar-list::-webkit-scrollbar {
+  height: 6px;
+}
+
+.similar-list::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 20px;
+}
+
+/* Product Card */
+.similar-card {
+  min-width: 220px;
+  border: 1px solid #e3e3e3;
+  border-radius: 8px;
+  padding: 12px;
+  position: relative;
+  background: #fff;
+  transition: all 0.2s ease;
+}
+
+.similar-card:hover {
+  box-shadow: 0px 2px 8px rgba(0,0,0,0.15);
+}
+
+/* Wishlist Icon */
+.similar-wishlist {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  cursor: pointer;
+}
+
+.similar-image {
+  height: 180px;
+  width: 100%;
+  object-fit: contain;
+}
+
+/* title */
+.similar-title-text {
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: 6px;
+  color: #111;
+}
+
+/* rating */
+.similar-rating-box {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.similar-rating {
+  background: #008c3e;
+  color: #fff;
+  font-size: 11px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.similar-rating-count {
+  font-size: 12px;
+  color: #555;
+}
+
+/* price */
+.similar-price-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.similar-price {
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.similar-old-price {
+  text-decoration: line-through;
+  font-size: 14px;
+  color: #999;
+}
+
+.similar-discount {
+  font-size: 14px;
+  color: #008c3e;
+  font-weight: 600;
 }
 
 
@@ -3012,7 +3134,6 @@ background: linear-gradient(135deg, #228b22, #2ecc71);
 .btnincrese,
 .btndecrese {
   border: 1px solid #ddd;
-  background: #fff;
   width: 26px;
   height: 26px;
   border-radius: 4px;
@@ -3022,7 +3143,7 @@ background: linear-gradient(135deg, #228b22, #2ecc71);
 
 .btnincrese:hover,
 .btndecrese:hover {
-  background: #f0f0f0;
+  
 }
 
 /* ✅ DELETE BUTTON */

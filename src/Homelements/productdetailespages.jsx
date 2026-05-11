@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useCallback } from "react";
+import { Heart } from "lucide-react";
 import { FaStar, FaBolt } from "react-icons/fa";
 import { useParams } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
@@ -17,9 +18,64 @@ export default function ProductDetails() {
   const [wishlist, setWishlist] = useState({});
   const [loading, setLoading] = useState(true);
 
-  
+     const assure =
+    "https://static-assets-web.flixcart.com/fk-p-linchpin-web/fk-cp-zion/img/fa_9e47c1.png";
 
-  // ✅ Use useCallback to avoid ESLint missing dependency warning
+  const similarProducts = [
+    {
+      id: 1,
+      img: "https://rukminim2.flixcart.com/image/312/312/ktketu80/mobile/6/n/d/iphone-13-mlpg3hn-a-apple-original-imag6vpyghayhhrh.jpeg?q=70&crop=false",
+      title: "Samsung Galaxy S24 FE 5G (Graphite, 256 GB)",
+      rating: 4.5,
+      ratingCount: "59,629",
+      price: 37999,
+      oldPrice: 65999,
+      discount: "42% off",
+    },
+    {
+      id: 2,
+      img: "https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/d/a/a/11t-pro-5g-hyperphone-mzb0aftin-xiaomi-original-imah27t2qswsutve.jpeg?q=70&crop=false",
+      title: "Nothing Phone (3a) (Black, 256 GB)",
+      rating: 4.5,
+      ratingCount: "47,471",
+      price: 26999,
+      oldPrice: 29999,
+      discount: "10% off",
+    },
+    {
+      id: 3,
+      img: "https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/4/e/z/galaxy-m56-5g-sm-m566bzka-samsung-original-imahbh84zzduh938.jpeg?q=70&crop=false",
+      title: "Nothing Phone (3a) Pro (Grey, 256 GB)",
+      rating: 4.5,
+      ratingCount: "10,752",
+      price: 31999,
+      oldPrice: 34999,
+      discount: "8% off",
+    },
+    {
+      id: 4,
+      img: "https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/o/d/1/-original-imahggetmzzanrty.jpeg?q=70&crop=false",
+      title: "Xiaomi 11T Pro 5G (Moonlight White, 256 GB)",
+      rating: 4.0,
+      ratingCount: "976",
+      price: 43999,
+      oldPrice: 52999,
+      discount: "16% off",
+    },
+    {
+      id: 5,
+      img: "https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/0/q/f/-original-imahadxg8mgjzrfh.jpeg?q=70&crop=false",
+      title: "Google Pixel 9A (Porcelain, 256 GB) (8 GB RAM)",
+      rating: 4.4,
+      ratingCount: "3,417",
+      price: 44999 ,
+      oldPrice: 49999,
+      discount: "10% off",
+    },
+  ];
+
+
+  
   const fetchProductDetails = useCallback(async () => {
     try {
       const res = await fetch(
@@ -271,6 +327,43 @@ export default function ProductDetails() {
           </div>
         </div>
       </div>
+
+      <div className="similar-wrapper">
+      <h2 className="similar-title">Similar products</h2>
+
+      <div className="similar-list">
+        {similarProducts.map((item) => (
+          <div key={item.id} className="similar-card">
+            {/* Wish */}
+            <button className="similar-wishlist">
+              <Heart size={15} color="#888" />
+            </button>
+
+            {/* Image */}
+            <img src={item.img} alt={item.title} className="similar-image" />
+
+            {/* Title */}
+            <p className="similar-title-text">{item.title}</p>
+
+            {/* Rating */}
+            <div className="similar-rating-box">
+              <span className="similar-rating">{item.rating}★</span>
+              <span className="similar-rating-count">
+                ({item.ratingCount})
+              </span>
+              <img src={assure} alt="assured" style={{ width: "50px" }} />
+            </div>
+
+            {/* Price */}
+            <div className="similar-price-row">
+              <span className="similar-price">₹{item.price}</span>
+              <span className="similar-old-price">₹{item.oldPrice}</span>
+              <span className="similar-discount">{item.discount}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
 
       <Footer />
     </>

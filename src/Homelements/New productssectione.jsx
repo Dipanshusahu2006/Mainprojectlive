@@ -4,15 +4,15 @@ import '../App.css';
 function Newproductsarrival (){
 
     const ImgStyle = {
-     img1 : "http://demo.snstheme.com/html/simen/images/products/9.jpg",
+     img1 : "https://demo.snstheme.com/html/simen/images/products/9.jpg",
 
-     img2: "http://demo.snstheme.com/html/simen/images/products/11.jpg",
+     img2: "https://demo.snstheme.com/html/simen/images/products/11.jpg",
 
-     img3 : "http://demo.snstheme.com/html/simen/images/products/25.jpg",
+     img3 : "https://demo.snstheme.com/html/simen/images/products/25.jpg",
 
-     img4 : "http://demo.snstheme.com/html/simen/images/products/2.jpg",
+     img4 : "https://demo.snstheme.com/html/simen/images/products/2.jpg",
 
-     img5: "http://demo.snstheme.com/html/simen/images/products/3.jpg",
+     img5: "https://demo.snstheme.com/html/simen/images/products/3.jpg",
 
      images1 : "https://furns-react.netlify.app/_ipx/w_640,q_75/https%3A%2F%2Fcdn.shopify.com%2Fs%2Ffiles%2F1%2F0864%2F0607%2F0562%2Ffiles%2FNav1_LivingRoomFurniture.jpg%3Fv%3D1709032906?url=https%3A%2F%2Fcdn.shopify.com%2Fs%2Ffiles%2F1%2F0864%2F0607%2F0562%2Ffiles%2FNav1_LivingRoomFurniture.jpg%3Fv%3D1709032906&w=640&q=75",
 

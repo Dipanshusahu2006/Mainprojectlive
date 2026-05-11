@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const sliderData = [
     {
-    image: "https://clauem2.arrowtheme.com/media/wysiwyg/slider/image_64.png",
+    image: "https://www.shutterstock.com/image-illustration/warm-modern-living-room-openconcept-1000w-2638126305.jpg",
     title: "BEST OF COLLECTION",
     subtitle: "Spring - Summer 2023",
     description:
