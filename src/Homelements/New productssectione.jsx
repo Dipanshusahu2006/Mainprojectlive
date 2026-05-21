@@ -6,7 +6,7 @@ function Newproductsarrival (){
     const ImgStyle = {
      img1 : "https://png.pngtree.com/png-vector/20250101/ourmid/pngtree-luxury-bed-isolated-on-transparent-background-png-image_14912616.png",
 
-     img2: "https://img.magnific.com/free-psd/elegant-armchair-coffee-table-set-modern-comfort-style_191095-80516.jpg?semt=ais_hybrid&w=740&q=80",
+     img2: "https://img.magnific.com/free-vector/beige-soft-leather-armchair-with-wooden-legs_107791-29582.jpg",
 
      img3 : "https://m.media-amazon.com/images/I/51ftfETgXZL._SL1024_.jpg",
 
