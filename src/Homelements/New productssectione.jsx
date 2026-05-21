@@ -4,15 +4,15 @@ import '../App.css';
 function Newproductsarrival (){
 
     const ImgStyle = {
-     img1 : "https://demo.snstheme.com/html/simen/images/products/9.jpg",
+     img1 : "https://m.media-amazon.com/images/I/31whicmjZPL.jpg",
 
-     img2: "https://demo.snstheme.com/html/simen/images/products/11.jpg",
+     img2: "https://img.magnific.com/free-vector/beige-soft-leather-armchair-with-wooden-legs_107791-29582.jpg",
 
-     img3 : "https://demo.snstheme.com/html/simen/images/products/25.jpg",
+     img3 : "https://m.media-amazon.com/images/I/51ftfETgXZL._SL1024_.jpg",
 
-     img4 : "https://demo.snstheme.com/html/simen/images/products/2.jpg",
+     img4 : "https://m.media-amazon.com/images/I/413kCh-7vRL._SX679_.jpg",
 
-     img5: "https://demo.snstheme.com/html/simen/images/products/3.jpg",
+     img5: "https://m.media-amazon.com/images/I/71o6bjfMydL._SL1500_.jpg",
 
      images1 : "https://furns-react.netlify.app/_ipx/w_640,q_75/https%3A%2F%2Fcdn.shopify.com%2Fs%2Ffiles%2F1%2F0864%2F0607%2F0562%2Ffiles%2FNav1_LivingRoomFurniture.jpg%3Fv%3D1709032906?url=https%3A%2F%2Fcdn.shopify.com%2Fs%2Ffiles%2F1%2F0864%2F0607%2F0562%2Ffiles%2FNav1_LivingRoomFurniture.jpg%3Fv%3D1709032906&w=640&q=75",
 
