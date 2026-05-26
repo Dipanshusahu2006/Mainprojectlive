@@ -5,9 +5,21 @@ import Shooping from "../Images/Shooping.png";
 import { useCart } from "react-use-cart";
 
 function Header({ setSearchQuery }) {
-  const userId = localStorage.getItem("Ids");
+  
   const [input, setInput] = useState("");
   const inputRef = useRef(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(
+  !!localStorage.getItem("Ids")
+);
+   const Id = isLoggedIn
+  ? localStorage.getItem("Ids")
+  : null;
+    
+  const userId = Id; 
+
+  useEffect(() => {
+  setIsLoggedIn(!!localStorage.getItem("Ids"));
+}, []);
 
   const handleFocus = () => {
     if (inputRef.current) {
@@ -22,13 +34,12 @@ function Header({ setSearchQuery }) {
     if (setSearchQuery) setSearchQuery(input);
   };
 
-  const Id = localStorage.getItem("Ids");
+
   const { totalUniqueItems } = useCart();
 
   const [buttne1, setbuttne1] = useState({ display: "block" });
   const [buttne2, setbuttne2] = useState({ display: "none" });
-  const [showMobileIcon, setShowMobileIcon] = useState(true);
-  const [LoginButtone, setLoginButtone] = useState({});
+  const [showMobileIcon, setShowMobileIcon] = useState(!!Id);
   const [profiles, setprofile] = useState({ display: "none" });
   const [slicenurl, setslicenurl] = useState({});
   const [Cartnumbers, setCartnumbers] = useState([]);
@@ -116,14 +127,21 @@ const Slice4 = () => {
 };
 
   const Logout = () => {
-    localStorage.removeItem("Ids");
-    setbuttne1({ display: "none" });
-    setbuttne2({ display: "none" });
-    setprofile({ display: "none" });
-    setShowMobileIcon(true);
-    setLoginButtone({ display: "block" });
-  };
+  localStorage.removeItem("Ids");
 
+  setIsLoggedIn(false);
+
+  // reset all UI state
+  setbuttne1({ display: "block" });
+  setbuttne2({ display: "none" });
+  setprofile({ display: "none" });
+  setShowMobileIcon(false);
+
+  // clear data
+  setslicenurl({});
+  setCartnumbers([]);
+  setBelll([]);
+};
   return (
     <>
       <div className="Header">
@@ -173,19 +191,21 @@ const Slice4 = () => {
                   <i className="fa-solid fa-bell"></i>
                 </NavLink>
               </li>
-              {showMobileIcon ? (
-  <li className="Hiddenprofilebuttone1" onClick={Slice3}>
-    <i className="fa-regular fa-circle-user"></i>
-  </li>
-) : (
-  <li className="Hiddenprofilebuttone2" onClick={Slice4}>
-    <i className="fa-regular fa-circle-user"></i>
-  </li>
+              {Id && (
+  showMobileIcon ? (
+    <li className="Hiddenprofilebuttone1" onClick={Slice3}>
+      <i className="fa-regular fa-circle-user"></i>
+    </li>
+  ) : (
+    <li className="Hiddenprofilebuttone2" onClick={Slice4}>
+      <i className="fa-regular fa-circle-user"></i>
+    </li>
+  )
 )}
             </ul>
 
             {!Id ? (
-              <button className="Login-buttone" style={LoginButtone}>
+              <button className="Login-buttone">
                 <Link to={"/Login"}>Log-in</Link>
               </button>
             ) : (
