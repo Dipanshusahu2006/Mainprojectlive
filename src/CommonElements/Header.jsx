@@ -34,7 +34,7 @@ function Header({ setSearchQuery }) {
   const [Cartnumbers, setCartnumbers] = useState([]);
   const [Bell, setBelll] = useState([]);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 1228);
+  const [isMobile, setIsMobile] = useState(() => window.innerWidth <= 1228);
 
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth <= 1228);
